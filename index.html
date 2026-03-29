@@ -1,0 +1,2968 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark" data-lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ─── Anti-flash: theme set before paint ───────────────────────── -->
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+      var l = localStorage.getItem('lang');
+      if (!l) l = (navigator.language||'es').startsWith('es') ? 'es' : 'en';
+      document.documentElement.setAttribute('data-lang', l);
+      document.documentElement.lang = l;
+    })();
+  </script>
+
+  <!-- ─── SEO ─────────────────────────────────────────────────────── -->
+  <title>Alex Elgueta · Fullstack Engineer</title>
+  <meta name="description" content="Alex Elgueta (kanazawa) — Fullstack Engineer, CEO de Surco, CTO de Portal de Especialistas. TypeScript, Go, React, Next.js, Clean Architecture. Chile." />
+  <meta name="author" content="Alex Elgueta" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.alexelgueta.me/" />
+  <link rel="alternate" hreflang="es" href="https://www.alexelgueta.me/" />
+  <link rel="alternate" hreflang="en" href="https://www.alexelgueta.me/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.alexelgueta.me/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.alexelgueta.me/" />
+  <meta property="og:title" content="Alex Elgueta · Fullstack Engineer" />
+  <meta property="og:description" content="CEO de Surco, CTO de Portal de Especialistas. Construyendo software que dura con TypeScript, Go, React y Clean Architecture." />
+  <meta property="og:image" content="https://www.alexelgueta.me/og-image.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Alex Elgueta" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:site_name" content="kanazawa_" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@AlexElguetaDev" />
+  <meta name="twitter:creator" content="@AlexElguetaDev" />
+  <meta name="twitter:title" content="Alex Elgueta · Fullstack Engineer" />
+  <meta name="twitter:description" content="CEO de Surco, CTO de Portal de Especialistas. TypeScript, Go, React, Clean Architecture. Chile." />
+  <meta name="twitter:image" content="https://www.alexelgueta.me/og-image.svg" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Alex Elgueta",
+    "url": "https://www.alexelgueta.me/",
+    "image": "https://media.licdn.com/dms/image/v2/D4D03AQHwpvkXctTJhg/profile-displayphoto-scale_400_400/B4DZv_qLSVJ0Ag-/0/1769520805812?e=1776297600&v=beta&t=yDlXPjE30BIV08Iy7Rbt0Pno_D8FPvgnNyvNrxcPnQc",
+    "sameAs": [
+      "https://github.com/kanazawa-dev",
+      "https://twitter.com/AlexElguetaDev",
+      "https://www.linkedin.com/in/alexelguetar/"
+    ],
+    "jobTitle": "Fullstack Engineer",
+    "worksFor": [
+      { "@type": "Organization", "name": "Surco" },
+      { "@type": "Organization", "name": "Portal de Especialistas" },
+      { "@type": "Organization", "name": "Karibu" }
+    ],
+    "address": { "@type": "PostalAddress", "addressCountry": "CL" },
+    "knowsAbout": ["TypeScript", "Go", "React", "Next.js", "Clean Architecture", "Node.js"]
+  }
+  </script>
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Surco",
+      "description": "Plataforma AgriTech para Latinoamérica. Conecta el agro con tecnología real mediante un monorepo Next.js + NestJS.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "author": { "@type": "Person", "name": "Alex Elgueta", "url": "https://www.alexelgueta.me/" },
+      "offers": { "@type": "Offer", "availability": "https://schema.org/InStock" },
+      "keywords": "AgriTech, Latinoamérica, Next.js, NestJS, TypeScript"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Portal de Especialistas",
+      "description": "Marketplace de reparaciones del hogar con cientos de usuarios activos en producción. CTO y Co-fundador.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "author": { "@type": "Person", "name": "Alex Elgueta", "url": "https://www.alexelgueta.me/" },
+      "offers": { "@type": "Offer", "availability": "https://schema.org/InStock" },
+      "keywords": "marketplace, reparaciones, hogar, Chile, React, Node.js"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "open-banking-chile",
+      "description": "Scrapers open source para bancos chilenos. Disponible en GitHub.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Cross-platform",
+      "url": "https://github.com/kanazawa-dev/open-banking-chile",
+      "author": { "@type": "Person", "name": "Alex Elgueta", "url": "https://www.alexelgueta.me/" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "keywords": "open banking, Chile, scraper, fintech, open source"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "obsidian-cli",
+      "description": "CLI para interactuar con Obsidian desde la terminal.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS, Linux",
+      "url": "https://github.com/kanazawa-dev/obsidian-cli",
+      "author": { "@type": "Person", "name": "Alex Elgueta", "url": "https://www.alexelgueta.me/" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "keywords": "obsidian, CLI, terminal, notes, productivity"
+    }
+  ]
+  </script>
+
+  <!-- ─── Favicon ───────────────────────────────────────────────────── -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231C1410'/><text x='16' y='24' font-family='Georgia,serif' font-size='22' font-weight='bold' fill='%23E07855' text-anchor='middle'>A</text></svg>" />
+  <link rel="apple-touch-icon" href="https://media.licdn.com/dms/image/v2/D4D03AQHwpvkXctTJhg/profile-displayphoto-scale_400_400/B4DZv_qLSVJ0Ag-/0/1769520805812?e=1776297600&v=beta&t=yDlXPjE30BIV08Iy7Rbt0Pno_D8FPvgnNyvNrxcPnQc" />
+
+  <!-- ─── Preload avatar ────────────────────────────────────────────── -->
+  <link rel="preload" as="image" href="https://media.licdn.com/dms/image/v2/D4D03AQHwpvkXctTJhg/profile-displayphoto-scale_400_400/B4DZv_qLSVJ0Ag-/0/1769520805812?e=1776297600&v=beta&t=yDlXPjE30BIV08Iy7Rbt0Pno_D8FPvgnNyvNrxcPnQc" />
+  <link rel="manifest" href="manifest.json" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Variables ──────────────────────────────────────────────── */
+    :root {
+      --bg:          #FAF7F4;
+      --bg-2:        #F0E8E0;
+      --text:        #1A1008;
+      --text-muted:  #8B6B5A;
+      --accent:      #C65D3B;
+      --accent-2:    #8B3A1F;
+      --border:      #DCC8BA;
+      --tag-lang:    #C65D3B;
+      --tag-fe:      #7B5EA7;
+      --tag-be:      #3B7A8B;
+      --tag-state:   #5A8B3B;
+      --tag-arch:    #8B6B3B;
+      --tag-infra:   #3B5A8B;
+      --tag-tools:   #8B3B6B;
+    }
+    [data-theme="dark"] {
+      --bg:          #1C1410;
+      --bg-2:        #2A1E16;
+      --text:        #F5EDE8;
+      --text-muted:  #A07060;
+      --accent:      #E07855;
+      --accent-2:    #F0A882;
+      --border:      #3D2A1F;
+      --tag-lang:    #E07855;
+      --tag-fe:      #A07ACA;
+      --tag-be:      #5AAABB;
+      --tag-state:   #7ABB5A;
+      --tag-arch:    #BB9A5A;
+      --tag-infra:   #5A7ABB;
+      --tag-tools:   #BB5A9A;
+    }
+
+    /* ─── Reset ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Share Tech Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+      transition: background 0.25s, color 0.25s;
+      cursor: none;
+    }
+    a { color: var(--accent); text-decoration: none; cursor: none; }
+    a:hover { color: var(--accent-2); text-decoration: underline; }
+    button { cursor: none; }
+    img { display: block; }
+
+    /* ─── Custom cursor ──────────────────────────────────────────── */
+    #cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 10px; height: 18px;
+      background: var(--accent);
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.85;
+      transform: translate(-2px, 0);
+      transition: background 0.2s;
+      animation: cursor-blink 1s step-start infinite;
+    }
+    @keyframes cursor-blink {
+      0%, 100% { opacity: 0.85; }
+      50%       { opacity: 0; }
+    }
+
+    /* ─── Scroll fade-in ─────────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Layout ─────────────────────────────────────────────────── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-child { border-bottom: none; }
+
+    /* ─── Nav ────────────────────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .logo {
+      font-family: 'VT323', monospace;
+      font-size: 26px;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+    .logo span.cursor-logo {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background: var(--accent);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 1s step-start infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .icon-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      cursor: none;
+      color: var(--text);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 13px;
+      padding: 5px 10px;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .icon-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .icon-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    /* ─── Hero ───────────────────────────────────────────────────── */
+    #hero {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 40px;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    @media (max-width: 540px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-avatar { justify-self: center; }
+    }
+    .hero-avatar {
+      position: relative;
+      width: 120px;
+      height: 120px;
+    }
+    .hero-avatar img {
+      width: 120px;
+      height: 120px;
+      border-radius: 4px;
+      border: 2px solid var(--accent);
+      image-rendering: auto;
+    }
+    .hero-avatar::after {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    .hero-title {
+      font-family: 'VT323', monospace;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.1;
+      color: var(--text);
+    }
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+    .typewriter {
+      display: inline-block;
+      overflow: hidden;
+      border-right: 2px solid var(--accent);
+      white-space: nowrap;
+      width: 0;
+      animation: typing 2s steps(30) 0.5s forwards, blink-caret 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to   { width: 100%; }
+    }
+    @keyframes blink-caret {
+      0%, 100% { border-color: var(--accent); }
+      50%      { border-color: transparent; }
+    }
+    .hero-badge {
+      display: inline-block;
+      margin-top: 14px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 3px 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .hero-badge strong { color: var(--accent); }
+    .hero-links {
+      margin-top: 18px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .hero-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 4px 10px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .hero-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .hero-link svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    /* ─── Section titles ─────────────────────────────────────────── */
+    .section-title {
+      font-family: 'VT323', monospace;
+      font-size: 28px;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 32px;
+    }
+    .section-title::before { content: '> '; opacity: 0.5; }
+
+    /* ─── About ──────────────────────────────────────────────────── */
+    #about p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin-bottom: 12px;
+    }
+    #about p strong { color: var(--text); }
+    .roles {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .role-line {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .role-line::before {
+      content: '↳';
+      color: var(--accent);
+    }
+    .role-line strong { color: var(--text); }
+
+    /* ─── Now ────────────────────────────────────────────────────── */
+    .now-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .now-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .now-card.green  { border-left-color: var(--tag-state); }
+    .now-card.purple { border-left-color: var(--tag-fe); }
+    .now-card.blue   { border-left-color: var(--tag-be); }
+    .now-card-label {
+      font-family: 'VT323', monospace;
+      font-size: 13px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .now-card-title {
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .now-card-stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 2px;
+      border: 1px solid;
+      width: fit-content;
+    }
+    .now-card-stat.active {
+      color: var(--tag-state);
+      border-color: var(--tag-state);
+    }
+    .now-card-stat.active::before {
+      content: '';
+      display: inline-block;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--tag-state);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .now-card-stat.beta {
+      color: var(--tag-arch);
+      border-color: var(--tag-arch);
+    }
+    .now-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .now-card p strong { color: var(--text); }
+    .now-card em { color: var(--accent-2); font-style: italic; }
+    .now-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: var(--tag-state);
+      margin-bottom: 10px;
+    }
+    .now-status::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--tag-state);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* ─── Stack ──────────────────────────────────────────────────── */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .stack-group {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px;
+    }
+    .stack-group-title {
+      font-family: 'VT323', monospace;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 2px;
+      background: var(--bg);
+      border: 1px solid;
+      letter-spacing: 0.5px;
+    }
+    .tag.lang  { color: var(--tag-lang);  border-color: var(--tag-lang); }
+    .tag.fe    { color: var(--tag-fe);    border-color: var(--tag-fe); }
+    .tag.be    { color: var(--tag-be);    border-color: var(--tag-be); }
+    .tag.state { color: var(--tag-state); border-color: var(--tag-state); }
+    .tag.arch  { color: var(--tag-arch);  border-color: var(--tag-arch); }
+    .tag.infra { color: var(--tag-infra); border-color: var(--tag-infra); }
+    .tag.tools { color: var(--tag-tools); border-color: var(--tag-tools); }
+
+    /* ─── Projects ───────────────────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.2s;
+    }
+    .project-card:hover { border-color: var(--accent); }
+    .project-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .project-name {
+      font-family: 'VT323', monospace;
+      font-size: 22px;
+      color: var(--text);
+    }
+    .project-link {
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .project-link:hover { color: var(--accent); }
+    .project-link svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; display: block; }
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      flex: 1;
+    }
+    .project-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: fit-content;
+    }
+    .project-badge.public { color: var(--tag-state); border-color: var(--tag-state); }
+    .project-footer { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+
+    /* ─── Blog ───────────────────────────────────────────────────── */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .blog-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.2s;
+    }
+    .blog-card:hover { border-color: var(--accent); }
+    .blog-date {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+    .blog-title {
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .blog-excerpt {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .blog-read {
+      font-size: 12px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 4px;
+    }
+    .blog-read::after { content: ' →'; }
+    .blog-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+    /* ─── Blog Modal ─────────────────────────────────────────────── */
+    .blog-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .blog-overlay.open { display: flex; }
+    .blog-modal {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 36px;
+      position: relative;
+    }
+    .blog-modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-muted);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 13px;
+      padding: 3px 10px;
+      cursor: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .blog-modal-close:hover { border-color: var(--accent); color: var(--accent); }
+    .blog-modal h2 {
+      font-family: 'VT323', monospace;
+      font-size: 28px;
+      color: var(--accent);
+      margin-bottom: 8px;
+      padding-right: 60px;
+    }
+    .blog-modal .meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .blog-modal p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+    .blog-modal p strong { color: var(--text); }
+    .blog-modal h3 {
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      color: var(--text);
+      margin: 20px 0 8px;
+    }
+
+    /* ─── Reflection ─────────────────────────────────────────────── */
+    #reflection {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 0;
+    }
+    .reflection-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .reflection-inner blockquote {
+      font-family: 'VT323', monospace;
+      font-size: clamp(20px, 3vw, 28px);
+      line-height: 1.5;
+      color: var(--accent);
+      margin-bottom: 32px;
+    }
+    .reflection-inner blockquote p { margin-bottom: 14px; }
+    .reflection-inner blockquote p:last-child { margin-bottom: 0; }
+    .philosophy-line {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+    .philosophy-line strong { color: var(--accent-2); }
+
+    /* ─── Music player ───────────────────────────────────────────── */
+    #music-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+    #music-player-controls {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    #music-frame {
+      display: none;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      border: 1px solid var(--border);
+    }
+    #music-frame.visible { display: block; }
+    #music-toggle-btn {
+      background: var(--accent);
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 13px;
+      padding: 7px 14px;
+      cursor: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    #music-toggle-btn:hover { background: var(--accent-2); }
+    #egg-wrap { position: relative; }
+    #egg-btn { font-size: 15px; transition: transform 0.3s; }
+    #egg-btn:hover { transform: rotate(-15deg) scale(1.25); }
+    #egg-tooltip {
+      display: none;
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      background: #0d1117;
+      border: 1px solid #E07855;
+      border-radius: 4px;
+      padding: 14px 16px;
+      width: 260px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      line-height: 1.8;
+      color: #c9d1d9;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      z-index: 9999;
+    }
+    #egg-tooltip.open { display: block; animation: egg-pop 0.18s ease; }
+    #egg-tooltip::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      right: 14px;
+      width: 10px;
+      height: 10px;
+      background: #0d1117;
+      border-left: 1px solid #E07855;
+      border-top: 1px solid #E07855;
+      transform: rotate(45deg);
+    }
+    .egg-tt-line-accent { color: #E07855; }
+    .egg-tt-line-green  { color: #3fb950; }
+    .egg-tt-line-muted  { color: #6e7681; font-size: 11px; }
+    @keyframes egg-pop {
+      from { opacity: 0; transform: translateY(-4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────────── */
+    footer {
+      padding: 32px 0;
+      text-align: center;
+    }
+    .footer-inner {
+      font-family: 'VT323', monospace;
+      font-size: 18px;
+      color: var(--text-muted);
+    }
+    .footer-inner span { color: var(--accent); }
+    .footer-sub {
+      font-size: 12px;
+      color: var(--border);
+      margin-top: 4px;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    /* ─── Utilities ──────────────────────────────────────────────── */
+    .hidden { display: none !important; }
+    [data-lang="en"] .es { display: none; }
+    [data-lang="es"] .en { display: none; }
+
+    /* ─── Responsive ─────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      section { padding: 48px 0; }
+      .stack-grid, .now-grid { grid-template-columns: 1fr; }
+      .projects-grid, .blog-grid { grid-template-columns: 1fr; }
+      #music-player { bottom: 12px; right: 12px; }
+      .blog-modal { padding: 24px; }
+    }
+    @media (hover: none) {
+      body, a, button, .icon-btn { cursor: auto; }
+      #cursor { display: none; }
+    }
+
+    /* ─── Progress bar ───────────────────────────────────────────── */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0%;
+      background: var(--accent);
+      z-index: 9998;
+      transition: width 0.05s linear;
+    }
+
+    /* ─── Hero reveal ────────────────────────────────────────────── */
+    #hero {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    #hero.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Contact ────────────────────────────────────────────────── */
+    #contact {
+      padding: 72px 0;
+    }
+    .contact-inner {
+      max-width: 100%;
+    }
+    .contact-inner p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .copy-email-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text);
+      padding: 10px 20px;
+      cursor: none;
+      transition: border-color 0.2s, color 0.2s;
+      margin-bottom: 24px;
+    }
+    .copy-email-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .copy-email-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .copy-email-btn .copied {
+      display: none;
+      color: var(--tag-state);
+    }
+    .copy-email-btn.did-copy .label { display: none; }
+    .copy-email-btn.did-copy .copied { display: inline; }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* ─── Testimonials ───────────────────────────────────────────── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .testimonial-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .testimonial-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-style: italic;
+    }
+    .testimonial-text::before { content: '"'; color: var(--accent); font-size: 20px; line-height: 0; vertical-align: -4px; margin-right: 2px; }
+    .testimonial-text::after  { content: '"'; color: var(--accent); font-size: 20px; line-height: 0; vertical-align: -4px; margin-left: 2px; }
+    .testimonial-author {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+    }
+    .testimonial-name {
+      font-size: 13px;
+      color: var(--text);
+    }
+    .testimonial-role {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ─── Nav links ─────────────────────────────────────────────── */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-link {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding: 4px 8px;
+      border-radius: 3px;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .nav-link:hover { color: var(--accent); background: var(--bg-2); text-decoration: none; }
+    @media (max-width: 720px) { .nav-links { display: none; } }
+
+    /* ─── Availability ───────────────────────────────────────────── */
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .avail-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .avail-dot.off  { background: #e05555; box-shadow: 0 0 0 2px rgba(224,85,85,0.2); }
+    .avail-dot.on   {
+      background: var(--tag-state);
+      box-shadow: 0 0 0 2px rgba(122,187,90,0.2);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .availability strong { color: var(--text); }
+
+    /* ─── Project card glow ──────────────────────────────────────── */
+    .project-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent), 0 6px 24px rgba(198,93,59,0.12);
+    }
+    [data-theme="dark"] .project-card:hover {
+      box-shadow: 0 0 0 1px var(--accent), 0 6px 24px rgba(224,120,85,0.18);
+    }
+
+    /* ─── Back to top ────────────────────────────────────────────── */
+    #back-to-top {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 200;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-muted);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      padding: 7px 10px;
+      cursor: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.2s, transform 0.2s, border-color 0.2s, color 0.2s;
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    #back-to-top:hover { border-color: var(--accent); color: var(--accent); }
+    #back-to-top svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+    @media (max-width: 600px) { #back-to-top { bottom: 12px; left: 12px; } }
+
+    /* ─── Responsive ─────────────────────────────────────────────── */
+    @media (max-width: 480px) {
+      .hero-title { font-size: 32px; }
+      .hero-badge { font-size: 11px; }
+      .hero-links { gap: 6px; }
+      .hero-link { font-size: 12px; padding: 3px 8px; }
+      .section-title { font-size: 24px; }
+      .now-card-title { font-size: 17px; }
+      .blog-title { font-size: 17px; }
+      #music-player { right: 8px; bottom: 8px; }
+      #music-frame iframe { width: 260px; }
+      .copy-email-btn { font-size: 12px; }
+    }
+    @media (max-width: 360px) {
+      .container { padding: 0 16px; }
+      .hero-link span { display: none; }
+    }
+
+    /* ─── Keyboard shortcuts overlay ────────────────────────────── */
+    #shortcuts-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 600;
+      align-items: center;
+      justify-content: center;
+    }
+    #shortcuts-overlay.open { display: flex; }
+    .shortcuts-modal {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 32px;
+      width: 100%;
+      max-width: 420px;
+      position: relative;
+    }
+    .shortcuts-modal h3 {
+      font-family: 'VT323', monospace;
+      font-size: 22px;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .shortcut-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .shortcut-row:last-child { border-bottom: none; }
+    .shortcut-key {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 24px;
+      padding: 0 6px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      color: var(--text);
+    }
+    .shortcuts-close {
+      position: absolute;
+      top: 12px; right: 12px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-muted);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      padding: 3px 8px;
+      cursor: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .shortcuts-close:hover { border-color: var(--accent); color: var(--accent); }
+    .shortcuts-hint {
+      font-size: 11px;
+      color: var(--border);
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    /* ─── Easter egg terminal ────────────────────────────────────── */
+    #easter-egg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 9000;
+      font-family: 'Share Tech Mono', monospace;
+      color: #00ff41;
+      padding: 40px 48px;
+      overflow: hidden;
+      cursor: none;
+    }
+    #easter-egg.open { display: flex; flex-direction: column; justify-content: center; }
+    #easter-egg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,255,65,0.015) 2px,
+        rgba(0,255,65,0.015) 4px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+    #easter-egg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.6) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .ee-line {
+      font-size: clamp(13px, 1.8vw, 16px);
+      line-height: 1.8;
+      opacity: 0;
+      position: relative;
+      z-index: 3;
+      white-space: pre;
+    }
+    .ee-line.show { opacity: 1; }
+    .ee-line.accent { color: #E07855; }
+    .ee-line.dim    { color: #1a5c1a; }
+    .ee-line.white  { color: #F5EDE8; }
+    .ee-line.muted  { color: #4a8a4a; }
+    .ee-exit {
+      position: absolute;
+      bottom: 32px; right: 48px;
+      font-size: 13px;
+      color: #1a5c1a;
+      z-index: 3;
+      animation: blink 1.2s step-start infinite;
+    }
+    .ee-bar {
+      display: inline-block;
+      width: 0;
+      height: 14px;
+      background: #00ff41;
+      vertical-align: middle;
+      transition: width 1.2s linear;
+    }
+    .ee-bar.full { width: 280px; }
+
+    /* ─── Glitch logo ───────────────────────────────────────────── */
+    .logo {
+      position: relative;
+      display: inline-block;
+    }
+    .logo:hover {
+      animation: glitch-logo 0.45s steps(2) 1;
+    }
+    @keyframes glitch-logo {
+      0%   { text-shadow:  3px 0 #5AAABB, -3px 0 #A07ACA; transform: translate(0,0); }
+      20%  { text-shadow: -3px 0 #5AAABB,  3px 0 #A07ACA; transform: translate(-3px, 1px); }
+      40%  { text-shadow:  3px 2px #E07855, -3px -2px #5AAABB; transform: translate(3px,-1px); }
+      60%  { text-shadow: -3px 0 #E07855,  3px 0 #5AAABB; transform: translate(-1px,0); }
+      80%  { text-shadow:  2px 0 #A07ACA; transform: translate(1px,0); }
+      100% { text-shadow: none; transform: translate(0,0); }
+    }
+
+    /* ─── Section dots ───────────────────────────────────────────── */
+    #section-dots {
+      position: fixed;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 50;
+    }
+    .s-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--border);
+      border: none;
+      padding: 0;
+      cursor: none;
+      transition: background 0.2s, transform 0.2s, height 0.2s;
+      flex-shrink: 0;
+    }
+    .s-dot:hover  { background: var(--text-muted); transform: scaleX(1.6); }
+    .s-dot.active { background: var(--accent);     height: 18px; }
+    @media (max-width: 960px) { #section-dots { display: none; } }
+
+    /* ─── Terminal mode ──────────────────────────────────────────── */
+    #terminal-mode {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #0d1117;
+      z-index: 8500;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px;
+      color: #c9d1d9;
+      flex-direction: column;
+    }
+    #terminal-mode.open { display: flex; }
+    #term-header {
+      display: flex;
+      align-items: center;
+      padding: 10px 16px;
+      background: #161b22;
+      border-bottom: 1px solid #30363d;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .term-dots { display: flex; gap: 6px; }
+    .term-dots span {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    #term-title {
+      flex: 1;
+      text-align: center;
+      font-size: 12px;
+      color: #6e7681;
+    }
+    #term-close {
+      background: none;
+      border: none;
+      color: #6e7681;
+      font-size: 18px;
+      cursor: none;
+      line-height: 1;
+      padding: 0 4px;
+      font-family: inherit;
+    }
+    #term-close:hover { color: #c9d1d9; }
+    #term-output {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 28px;
+      line-height: 1.8;
+      scroll-behavior: smooth;
+    }
+    .tl { display: block; margin: 0; white-space: pre-wrap; }
+    .tl.cmd    { color: #E07855; }
+    .tl.ok     { color: #3fb950; }
+    .tl.dim    { color: #444c56; }
+    .tl.muted  { color: #6e7681; }
+    .tl.accent { color: #E07855; }
+    .tl.head   { color: #79c0ff; font-weight: bold; }
+    .tl.warn   { color: #d29922; }
+    #term-input-row {
+      display: flex;
+      align-items: center;
+      padding: 12px 28px;
+      border-top: 1px solid #30363d;
+      background: #0d1117;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    #term-prompt { color: #E07855; white-space: nowrap; flex-shrink: 0; }
+    #term-input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      color: #c9d1d9;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px;
+      cursor: none;
+      caret-color: #E07855;
+    }
+
+    /* ─── prefers-reduced-motion ─────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .fade-in { opacity: 1 !important; transform: translateY(0) !important; }
+      #hero     { opacity: 1 !important; transform: none !important; }
+      #cursor   { display: none !important; }
+      body, a, button { cursor: auto !important; }
+    }
+
+    /* ─── Grain overlay ──────────────────────────────────────────── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9997;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+      background-repeat: repeat;
+    }
+
+
+    /* ─── Active nav link ────────────────────────────────────────── */
+    .nav-link.active { color: var(--accent); }
+
+    /* ─── CV download btn ────────────────────────────────────────── */
+    .cv-btn {
+      background: var(--accent) !important;
+      color: #fff !important;
+      border-color: var(--accent) !important;
+    }
+    .cv-btn:hover {
+      background: var(--accent-2) !important;
+      border-color: var(--accent-2) !important;
+      text-decoration: none;
+    }
+
+
+    /* ─── Print / CV ──────────────────────────────────────────────── */
+    #cv-print { display: none; }
+    @media print {
+      @page { margin: 14mm 18mm; size: A4; }
+      header, footer, main, #progress-bar, #cursor, #section-dots,
+      #terminal-mode, #easter-egg, #shortcuts-overlay,
+      #back-to-top, #music-player, body::after { display: none !important; }
+      #cv-print { display: block !important; }
+      body {
+        background: #fff !important; color: #111 !important;
+        font-family: Georgia, 'Times New Roman', serif !important;
+        font-size: 10.5pt !important; line-height: 1.55 !important;
+        cursor: auto !important;
+      }
+      a { color: #C65D3B; text-decoration: none; }
+      .cv-name { font-size: 24pt; font-weight: bold; color: #111; font-family: Georgia, serif; }
+      .cv-role-h { font-size: 11pt; color: #555; letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+      .cv-contacts { font-size: 9pt; color: #666; margin-top: 5px; font-family: 'Courier New', monospace; }
+      .cv-hr { border: none; border-top: 2px solid #C65D3B; margin: 10px 0 14px; }
+      .cv-sec { margin-top: 14px; page-break-inside: avoid; }
+      .cv-sec-title {
+        font-size: 9pt; font-weight: bold; text-transform: uppercase;
+        letter-spacing: 2px; color: #C65D3B;
+        border-bottom: 1px solid #e0d0c8; padding-bottom: 3px; margin-bottom: 8px;
+        font-family: 'Courier New', monospace;
+      }
+      .cv-row { margin-bottom: 10px; }
+      .cv-row-head { display: flex; justify-content: space-between; align-items: baseline; }
+      .cv-row-name { font-weight: bold; font-size: 10.5pt; }
+      .cv-row-date { font-size: 9pt; color: #888; }
+      .cv-row-desc { font-size: 9.5pt; color: #444; margin-top: 2px; }
+      .cv-row-tech { font-size: 8.5pt; color: #777; font-family: 'Courier New', monospace; margin-top: 2px; }
+      .cv-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
+      .cv-tag-line { font-size: 9pt; font-family: 'Courier New', monospace; color: #444; margin-bottom: 4px; }
+      .cv-tag-label { color: #C65D3B; font-weight: bold; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── Progress bar ─────────────────────────────────────────────── -->
+<div id="progress-bar"></div>
+
+<!-- ─── Custom cursor ────────────────────────────────────────────── -->
+<div id="cursor"></div>
+
+<!-- ─── Header ──────────────────────────────────────────────────── -->
+<header>
+  <nav class="container">
+    <div class="logo">&gt; kanazawa_</div>
+    <nav class="nav-links">
+      <a href="#about" class="nav-link es">about</a>
+      <a href="#about" class="nav-link en">about</a>
+      <a href="#projects" class="nav-link es">proyectos</a>
+      <a href="#projects" class="nav-link en">projects</a>
+      <a href="#testimonials" class="nav-link es">referencias</a>
+      <a href="#testimonials" class="nav-link en">references</a>
+      <a href="#contact" class="nav-link es">contacto</a>
+      <a href="#contact" class="nav-link en">contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="lang-toggle" aria-label="Toggle language" title="Switch EN/ES">
+        <span id="lang-label">EN</span>
+      </button>
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
+        <svg id="icon-moon" viewBox="0 0 24 24">
+          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
+        </svg>
+        <svg id="icon-sun" class="hidden" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+      <button class="icon-btn" id="term-btn" aria-label="Terminal mode" title="Terminal (X)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+          <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+        </svg>
+      </button>
+      <button class="icon-btn" id="music-btn" aria-label="Toggle music">
+        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
+          <path d="M9 18V5l12-2v13"/>
+          <circle cx="6" cy="18" r="3"/>
+          <circle cx="18" cy="16" r="3"/>
+        </svg>
+        <span class="es">música</span>
+        <span class="en">music</span>
+      </button>
+      <div id="egg-wrap">
+        <button class="icon-btn" id="egg-btn" aria-label="Pista del easter egg">🥚</button>
+        <div id="egg-tooltip">
+          <div class="egg-tt-line-accent">👀 Psst...</div>
+          <div>&nbsp;</div>
+          <div>Hay algo escondido en este portfolio.</div>
+          <div>&nbsp;</div>
+          <div class="egg-tt-line-green">1. Abre la consola del navegador</div>
+          <div class="egg-tt-line-muted">&nbsp;&nbsp;&nbsp;(F12 → pestaña Console)</div>
+          <div class="egg-tt-line-green">2. Escribe: <strong style="color:#E07855">kanazawa.hint()</strong></div>
+          <div class="egg-tt-line-green">3. Sigue las instrucciones 🔐</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ─── Main ─────────────────────────────────────────────────────── -->
+<main class="container">
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-avatar">
+      <img
+        src="https://media.licdn.com/dms/image/v2/D4D03AQHwpvkXctTJhg/profile-displayphoto-scale_400_400/B4DZv_qLSVJ0Ag-/0/1769520805812?e=1776297600&v=beta&t=yDlXPjE30BIV08Iy7Rbt0Pno_D8FPvgnNyvNrxcPnQc"
+        alt="Alex Elgueta"
+        width="120"
+        height="120"
+      />
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">Alex Elgueta</h1>
+      <div class="hero-subtitle">
+        <span>Fullstack Engineer</span>
+      </div>
+      <div class="hero-badge">
+        <span class="es">🌎 Chile &nbsp;·&nbsp; <strong id="age-count">29</strong> años &nbsp;·&nbsp; <strong id="years-count">6</strong>+ en esto &nbsp;·&nbsp; desde 2020</span>
+        <span class="en">🌎 Chile &nbsp;·&nbsp; <strong id="age-count-en">29</strong> y/o &nbsp;·&nbsp; <strong id="years-count-en">6</strong>+ in this &nbsp;·&nbsp; since 2020</span>
+      </div>
+      <div class="hero-links">
+        <a href="https://github.com/kanazawa-dev" target="_blank" rel="noopener" class="hero-link">
+          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          github
+        </a>
+        <a href="https://twitter.com/AlexElguetaDev" target="_blank" rel="noopener" class="hero-link">
+          <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          twitter
+        </a>
+        <a href="https://www.linkedin.com/in/alexelguetar/" target="_blank" rel="noopener" class="hero-link">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin
+        </a>
+        <a href="https://www.alexelgueta.me/" target="_blank" rel="noopener" class="hero-link">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          web
+        </a>
+      </div>
+      <div class="availability">
+        <span class="avail-dot off"></span>
+        <span class="es">No disponible para proyectos &nbsp;·&nbsp; <strong>Sí para un café</strong> ☕</span>
+        <span class="en">Not available for projects &nbsp;·&nbsp; <strong>Always up for coffee</strong> ☕</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="fade-in">
+    <h2 class="section-title">about</h2>
+    <div class="es">
+      <p>
+        Fullstack Engineer obsesionado con código que dura. Fundamentos sobre frameworks, siempre.
+        CEO de <strong>Surco</strong>, CTO de <strong>Portal de Especialistas</strong>, fullstack en <strong>Karibu</strong>.
+      </p>
+      <p>
+        Creo que el <strong>buen café</strong> y la <strong>buena música</strong> son requisitos mínimos
+        para escribir código decente. Sin eso, no hay arquitectura que aguante.
+      </p>
+      <p>
+        Mi motor real: <strong>mi pareja</strong> y <strong>mis dos hijas</strong>. Ellas aún toman
+        café de cebada — pero es provisional. Las voy a convertir. Lo verán.
+      </p>
+    </div>
+    <div class="en">
+      <p>
+        Fullstack Engineer obsessed with code that lasts. Fundamentals over frameworks, always.
+        CEO of <strong>Surco</strong>, CTO of <strong>Portal de Especialistas</strong>, fullstack at <strong>Karibu</strong>.
+      </p>
+      <p>
+        I believe <strong>good coffee</strong> and <strong>good music</strong> are minimum requirements
+        for writing decent code. No architecture survives bad coffee.
+      </p>
+      <p>
+        My real engine: <strong>my partner</strong> and <strong>my two daughters</strong>. They still
+        drink barley coffee — but that's temporary. I'm converting them. They'll see.
+      </p>
+    </div>
+    <div class="roles">
+      <div class="role-line"><strong>Surco</strong> — CEO &amp; Fundador</div>
+      <div class="role-line"><strong>Portal de Especialistas</strong> — CTO &amp; Co-fundador</div>
+      <div class="role-line"><strong>Karibu</strong> — FullStack Engineer</div>
+    </div>
+  </section>
+
+  <!-- Now -->
+  <section id="now" class="fade-in">
+    <h2 class="section-title">
+      <span class="es">ahora</span>
+      <span class="en">now</span>
+    </h2>
+    <div class="now-status">
+      <span class="es">actualizado Mar 2026</span>
+      <span class="en">updated Mar 2026</span>
+    </div>
+    <div class="now-grid">
+
+      <div class="now-card green">
+        <div class="now-card-label es">construyendo</div>
+        <div class="now-card-label en">building</div>
+        <div class="now-card-title">Surco</div>
+        <span class="now-card-stat beta es">5 clientes beta</span>
+        <span class="now-card-stat beta en">5 beta clients</span>
+        <p class="es">AgriTech para Latinoamérica. Monorepo <strong>Next.js + NestJS</strong>, avanzando rápido.</p>
+        <p class="en">AgriTech for Latin America. <strong>Next.js + NestJS</strong> monorepo, moving fast.</p>
+      </div>
+
+      <div class="now-card green">
+        <div class="now-card-label es">en producción</div>
+        <div class="now-card-label en">in production</div>
+        <div class="now-card-title">Portal de Especialistas</div>
+        <span class="now-card-stat active es">cientos de usuarios</span>
+        <span class="now-card-stat active en">hundreds of users</span>
+        <p class="es">Marketplace de reparaciones activo. Escalando arquitectura y liderando el equipo.</p>
+        <p class="en">Active home repair marketplace. Scaling architecture and leading the team.</p>
+      </div>
+
+      <div class="now-card purple">
+        <div class="now-card-label es">leyendo</div>
+        <div class="now-card-label en">reading</div>
+        <div class="now-card-title es">dos libros a la vez</div>
+        <div class="now-card-title en">two books at once</div>
+        <p class="es"><em>Más allá del bien y del mal</em> — Nietzsche, solo. Y <em>Orgullo y Prejuicio</em> — Jane Austen, con mi pareja: a veces leo yo, a veces ella. Así funciona.</p>
+        <p class="en"><em>Beyond Good and Evil</em> — Nietzsche, solo. And <em>Pride and Prejudice</em> — Jane Austen, with my partner: sometimes I read, sometimes she does. That's how it works.</p>
+      </div>
+
+      <div class="now-card blue">
+        <div class="now-card-label es">escuchando</div>
+        <div class="now-card-label en">listening</div>
+        <div class="now-card-title es">lo de siempre</div>
+        <div class="now-card-title en">the usual</div>
+        <p class="es">Lo que suene bien mientras el café está caliente. El player abajo a la derecha no miente.</p>
+        <p class="en">Whatever sounds good while the coffee is hot. The player bottom right doesn't lie.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Stack -->
+  <section id="stack" class="fade-in">
+    <h2 class="section-title">
+      <span class="es">herramientas</span>
+      <span class="en">tools</span>
+    </h2>
+    <div class="stack-grid">
+      <div class="stack-group">
+        <div class="stack-group-title">Languages</div>
+        <div class="tag-list">
+          <span class="tag lang">TypeScript</span>
+          <span class="tag lang">Go</span>
+          <span class="tag lang">Rust</span>
+          <span class="tag lang">Lua</span>
+          <span class="tag lang">C++</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-title">Frontend</div>
+        <div class="tag-list">
+          <span class="tag fe">React</span>
+          <span class="tag fe">Next.js</span>
+          <span class="tag fe">Astro</span>
+          <span class="tag fe">Vue</span>
+          <span class="tag fe">Tailwind CSS</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-title">State</div>
+        <div class="tag-list">
+          <span class="tag state">Redux</span>
+          <span class="tag state">Signals</span>
+          <span class="tag state">Zustand</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-title">Architecture</div>
+        <div class="tag-list">
+          <span class="tag arch">Clean</span>
+          <span class="tag arch">Hexagonal</span>
+          <span class="tag arch">Screaming</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-title">Infra</div>
+        <div class="tag-list">
+          <span class="tag infra">Docker</span>
+          <span class="tag infra">Vercel</span>
+          <span class="tag infra">Railway</span>
+          <span class="tag infra">GCP</span>
+          <span class="tag infra">AWS</span>
+          <span class="tag infra">Turbo</span>
+          <span class="tag infra">pnpm</span>
+          <span class="tag infra">Prisma</span>
+          <span class="tag infra">PostgreSQL</span>
+          <span class="tag infra">Redis</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-title">Daily Tools</div>
+        <div class="tag-list">
+          <span class="tag tools">Claude Code</span>
+          <span class="tag tools">LazyVim</span>
+          <span class="tag tools">Ghostty</span>
+          <span class="tag tools">Zellij</span>
+          <span class="tag tools">Starship</span>
+          <span class="tag tools">Raycast</span>
+          <span class="tag tools">Linear</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="fade-in">
+    <h2 class="section-title">
+      <span class="es">proyectos</span>
+      <span class="en">projects</span>
+    </h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-name">Surco</span>
+          <span class="project-badge">private</span>
+        </div>
+        <p class="project-desc es">Plataforma AgriTech para Latinoamérica. Conectando el agro con tecnología real.</p>
+        <p class="project-desc en">AgriTech platform for Latin America. Connecting agriculture with real technology.</p>
+        <div class="project-footer">
+          <span class="tag fe">Next.js</span>
+          <span class="tag be">NestJS</span>
+          <span class="tag be">Node.js</span>
+          <span class="tag infra">PostgreSQL</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-name">Portal de Especialistas</span>
+          <span class="project-badge">private</span>
+        </div>
+        <p class="project-desc es">Marketplace de reparaciones del hogar. CTO desde el día 1.</p>
+        <p class="project-desc en">Home repair marketplace. CTO from day one.</p>
+        <div class="project-footer">
+          <span class="tag fe">React</span>
+          <span class="tag be">Node.js</span>
+          <span class="tag infra">AWS</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-name">Karibu</span>
+          <span class="project-badge">private</span>
+        </div>
+        <p class="project-desc es">Ecosistema de skills de UI para agentes de IA. El futuro de los design systems.</p>
+        <p class="project-desc en">UI skills ecosystem for AI agents. The future of design systems.</p>
+        <div class="project-footer">
+          <span class="tag lang">TypeScript</span>
+          <span class="tag state">Signals</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-name">open-banking-chile</span>
+          <a href="https://github.com/kanazawa-dev/open-banking-chile" target="_blank" rel="noopener" class="project-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+        <div class="project-badge public">open source</div>
+        <p class="project-desc es">Scrapers open source para bancos chilenos. Porque los bancos no tienen API.</p>
+        <p class="project-desc en">Open source scrapers for Chilean banks. Because banks don't have APIs.</p>
+        <div class="project-footer">
+          <span class="tag lang">TypeScript</span>
+          <span class="tag be">Node.js</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-name">dotfiles-2026</span>
+          <a href="https://github.com/kanazawa-dev/dotfiles-2026" target="_blank" rel="noopener" class="project-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+        <div class="project-badge public">open source</div>
+        <p class="project-desc es">macOS dev environment completo: Ghostty, Neovim, Zsh, Starship, Claude Code.</p>
+        <p class="project-desc en">Complete macOS dev environment: Ghostty, Neovim, Zsh, Starship, Claude Code.</p>
+        <div class="project-footer">
+          <span class="tag tools">Neovim</span>
+          <span class="tag tools">Zsh</span>
+          <span class="tag tools">Ghostty</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-name">obsidian-cli</span>
+          <a href="https://github.com/kanazawa-dev/obsidian-cli" target="_blank" rel="noopener" class="project-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+        <div class="project-badge public">open source</div>
+        <p class="project-desc es">CLI para interactuar con Obsidian desde la terminal. Sin mouse, sin excusas.</p>
+        <p class="project-desc en">CLI to interact with Obsidian from the terminal. No mouse, no excuses.</p>
+        <div class="project-footer">
+          <span class="tag lang">Go</span>
+          <span class="tag tools">Obsidian</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog" class="fade-in">
+    <h2 class="section-title">
+      <span class="es">fragmentos</span>
+      <span class="en">thoughts</span>
+    </h2>
+    <div class="blog-grid">
+
+      <div class="blog-card" data-post="post1">
+        <div class="blog-date">
+          <span class="es">Mar 2026 &nbsp;·&nbsp; 5 min</span>
+          <span class="en">Mar 2026 &nbsp;·&nbsp; 5 min</span>
+        </div>
+        <div class="blog-title es">La IA no te va a reemplazar. El dev que usa IA sí.</div>
+        <div class="blog-title en">AI won't replace you. The dev who uses AI will.</div>
+        <p class="blog-excerpt es">No es hype. Es un cambio de paradigma real. El problema no es la IA — es que la mayoría la usa para no pensar.</p>
+        <p class="blog-excerpt en">It's not hype. It's a real paradigm shift. The problem isn't AI — it's that most people use it to avoid thinking.</p>
+        <div class="blog-tags">
+          <span class="tag tools">IA</span>
+          <span class="tag arch">dev</span>
+        </div>
+        <span class="blog-read es">leer</span>
+        <span class="blog-read en">read</span>
+      </div>
+
+      <div class="blog-card" data-post="post2">
+        <div class="blog-date">
+          <span class="es">Feb 2026 &nbsp;·&nbsp; 7 min</span>
+          <span class="en">Feb 2026 &nbsp;·&nbsp; 7 min</span>
+        </div>
+        <div class="blog-title es">Sin bases no hay futuro: lo que React no te enseña</div>
+        <div class="blog-title en">No foundations, no future: what React doesn't teach you</div>
+        <p class="blog-excerpt es">Antes de aprender un framework, aprende JavaScript. Antes de JavaScript, aprende cómo funciona el browser. El orden importa.</p>
+        <p class="blog-excerpt en">Before learning a framework, learn JavaScript. Before JavaScript, learn how the browser works. Order matters.</p>
+        <div class="blog-tags">
+          <span class="tag fe">frontend</span>
+          <span class="tag arch">fundamentos</span>
+        </div>
+        <span class="blog-read es">leer</span>
+        <span class="blog-read en">read</span>
+      </div>
+
+      <div class="blog-card" data-post="post3">
+        <div class="blog-date">
+          <span class="es">Ene 2026 &nbsp;·&nbsp; 4 min</span>
+          <span class="en">Jan 2026 &nbsp;·&nbsp; 4 min</span>
+        </div>
+        <div class="blog-title es">Claude Code cambió cómo trabajo. Para siempre.</div>
+        <div class="blog-title en">Claude Code changed how I work. Forever.</div>
+        <p class="blog-excerpt es">No es un autocomplete glorificado. Es un pair programmer que no se cansa, no tiene ego y recuerda todo el contexto.</p>
+        <p class="blog-excerpt en">It's not glorified autocomplete. It's a pair programmer that never gets tired, has no ego, and remembers all context.</p>
+        <div class="blog-tags">
+          <span class="tag tools">Claude Code</span>
+          <span class="tag tools">IA</span>
+        </div>
+        <span class="blog-read es">leer</span>
+        <span class="blog-read en">read</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="fade-in">
+    <h2 class="section-title">
+      <span class="es">qué dicen</span>
+      <span class="en">what they say</span>
+    </h2>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">Su habilidad para adaptarse, aprender y su constante predisposición para colaborar lo han llevado a un siguiente nivel. Constantemente trae al equipo ideas sobre nuevas tecnologías y herramientas que pueden mejorar nuestros procesos. Un profesional en crecimiento que contribuye tanto técnica como humanamente.</p>
+        <div class="testimonial-author">
+          <span class="testimonial-name">Nicolás Ayala</span>
+          <span class="testimonial-role">Full Stack Developer · Lolocar</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">Es una persona proactiva, con muchas ganas de aprender y una comprensión profunda de conceptos básicos y avanzados. No le teme a los retos y siempre está dispuesto a colaborar. Todo esto lo llevó a crecer de manera exponencial, convirtiéndose en el líder del equipo front-end.</p>
+        <div class="testimonial-author">
+          <span class="testimonial-name">Ariel Perez</span>
+          <span class="testimonial-role">Software Engineer · Lolocar</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">Alex siempre destacó por ser proactivo, eficiente y un gran jugador en equipo. Su pasión por el desarrollo se reflejaba en la calidad de su trabajo y en las ideas innovadoras que proponía. Su feedback constante me impulsó a mejorar y crecer como profesional.</p>
+        <div class="testimonial-author">
+          <span class="testimonial-name">Javiera Díaz Mizunuma</span>
+          <span class="testimonial-role">Ingeniera Civil en Computación · Lolocar</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">Alex demostró ser un aprendiz dedicado y comprometido. Su determinación y habilidades son evidentes en su trabajo. Estoy seguro de que será un valioso aporte para cualquier equipo de tecnología.</p>
+        <div class="testimonial-author">
+          <span class="testimonial-name">Jorge Alonso</span>
+          <span class="testimonial-role">Product @ Buk · Angel Investor</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="fade-in">
+    <div class="contact-inner">
+      <h2 class="section-title">
+        <span class="es">contacto</span>
+        <span class="en">contact</span>
+      </h2>
+      <p class="es">¿Tienes un proyecto interesante o quieres hablar de tecnología? Escríbeme.</p>
+      <p class="en">Have an interesting project or want to talk tech? Reach out.</p>
+      <button class="copy-email-btn" id="copy-email-btn" aria-label="Copiar email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+        </svg>
+        <span class="label">hola@alexelgueta.me</span>
+        <span class="copied es">✓ copiado</span>
+        <span class="copied en">✓ copied</span>
+      </button>
+      <div class="contact-links">
+        <a href="https://github.com/kanazawa-dev" target="_blank" rel="noopener" class="hero-link">
+          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          github
+        </a>
+        <a href="https://www.linkedin.com/in/alexelguetar/" target="_blank" rel="noopener" class="hero-link">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin
+        </a>
+        <a href="https://twitter.com/AlexElguetaDev" target="_blank" rel="noopener" class="hero-link">
+          <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          twitter
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reflection -->
+  <section id="reflection" class="fade-in">
+    <div class="reflection-inner">
+      <blockquote>
+        <p class="es">Hay cosas que no puedo cambiar desde una terminal.<br/>Pero puedo construir herramientas honestas<br/>para personas reales. Y eso, de a poco,<br/>también es cambiar algo.</p>
+        <p class="en">There are things I can't change from a terminal.<br/>But I can build honest tools<br/>for real people. And that, little by little,<br/>is also changing something.</p>
+      </blockquote>
+      <p class="philosophy-line">
+        <span class="es">— <strong>"Construye en silencio. Deja que el éxito haga el ruido."</strong></span>
+        <span class="en">— <strong>"Build in silence. Let success make the noise."</strong></span>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ─── Footer ────────────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span>kanazawa</span> © 2026
+    </div>
+    <div style="margin-top:12px">
+      <button id="cv-btn" style="background:none;border:1px solid var(--border);color:var(--text-muted);font-family:'Share Tech Mono',monospace;font-size:12px;padding:6px 14px;cursor:none;border-radius:3px;transition:border-color 0.2s,color 0.2s;display:inline-flex;align-items:center;gap:6px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span class="es">descargar CV</span><span class="en">download CV</span>
+      </button>
+    </div>
+    <div class="footer-sub">
+      <span class="es">hecho con 0 frameworks &nbsp;·&nbsp; última actualización Mar 2026 &nbsp;·&nbsp; <span class="shortcuts-hint" id="shortcuts-footer-hint" style="cursor:none">presiona <kbd style="background:var(--bg-2);border:1px solid var(--border);border-radius:2px;padding:0 4px;font-size:10px">?</kbd> para shortcuts</span></span>
+      <span class="en">built with 0 frameworks &nbsp;·&nbsp; last updated Mar 2026 &nbsp;·&nbsp; <span class="shortcuts-hint" style="cursor:none">press <kbd style="background:var(--bg-2);border:1px solid var(--border);border-radius:2px;padding:0 4px;font-size:10px">?</kbd> for shortcuts</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── Section dots ─────────────────────────────────────────────── -->
+<nav id="section-dots" aria-label="Secciones">
+  <button class="s-dot active" data-target="hero"         title="inicio"></button>
+  <button class="s-dot"        data-target="about"        title="about"></button>
+  <button class="s-dot"        data-target="now"          title="ahora"></button>
+  <button class="s-dot"        data-target="stack"        title="stack"></button>
+  <button class="s-dot"        data-target="projects"     title="proyectos"></button>
+  <button class="s-dot"        data-target="blog"         title="blog"></button>
+  <button class="s-dot"        data-target="testimonials" title="referencias"></button>
+  <button class="s-dot"        data-target="contact"      title="contacto"></button>
+  <button class="s-dot"        data-target="reflection"   title="reflexión"></button>
+</nav>
+
+<!-- ─── Terminal mode ────────────────────────────────────────────── -->
+<div id="terminal-mode" role="dialog" aria-label="Terminal interactiva">
+  <div id="term-header">
+    <div class="term-dots">
+      <span style="background:#ff5f57"></span>
+      <span style="background:#febc2e"></span>
+      <span style="background:#28c840"></span>
+    </div>
+    <span id="term-title">kanazawa — zsh — portfolio</span>
+    <button id="term-close" aria-label="Cerrar terminal">✕</button>
+  </div>
+  <div id="term-output"></div>
+  <div id="term-input-row">
+    <span id="term-prompt">kanazawa@portfolio ~ $</span>
+    <input id="term-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Comando" />
+  </div>
+</div>
+
+<!-- ─── Back to top ──────────────────────────────────────────────── -->
+<button id="back-to-top" aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+  <span class="es">arriba</span>
+  <span class="en">top</span>
+</button>
+
+<!-- ─── Music Player ──────────────────────────────────────────────── -->
+<div id="music-player">
+  <div id="music-frame" class="visible">
+    <iframe
+      src="https://open.spotify.com/embed/artist/3GRddahsrwDDd1zwb08Qg9?utm_source=generator&theme=0&autoplay=1"
+      width="300"
+      height="152"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"
+    ></iframe>
+  </div>
+  <button id="music-toggle-btn">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="18" cy="16" r="3"/>
+    </svg>
+    <span class="es">música</span>
+    <span class="en">music</span>
+  </button>
+</div>
+
+<!-- ─── Keyboard shortcuts overlay ──────────────────────────────── -->
+<div id="shortcuts-overlay">
+  <div class="shortcuts-modal">
+    <button class="shortcuts-close" id="shortcuts-close">✕</button>
+    <h3>
+      <span class="es">shortcuts</span>
+      <span class="en">shortcuts</span>
+    </h3>
+    <div class="shortcut-row">
+      <span class="es">toggle tema</span><span class="en">toggle theme</span>
+      <kbd class="shortcut-key">T</kbd>
+    </div>
+    <div class="shortcut-row">
+      <span class="es">cambiar idioma</span><span class="en">toggle language</span>
+      <kbd class="shortcut-key">L</kbd>
+    </div>
+    <div class="shortcut-row">
+      <span class="es">toggle música</span><span class="en">toggle music</span>
+      <kbd class="shortcut-key">M</kbd>
+    </div>
+    <div class="shortcut-row">
+      <span class="es">modo terminal</span><span class="en">terminal mode</span>
+      <kbd class="shortcut-key">X</kbd>
+    </div>
+    <div class="shortcut-row">
+      <span class="es">ir a GitHub</span><span class="en">go to GitHub</span>
+      <kbd class="shortcut-key">G</kbd>
+    </div>
+    <div class="shortcut-row">
+      <span class="es">ir a contacto</span><span class="en">go to contact</span>
+      <kbd class="shortcut-key">C</kbd>
+    </div>
+    <div class="shortcut-row">
+      <span class="es">cerrar / subir</span><span class="en">close / top</span>
+      <kbd class="shortcut-key">ESC</kbd>
+    </div>
+    <div class="shortcut-row" style="margin-top:8px">
+      <span style="font-size:11px;color:var(--text-muted)">
+        <span class="es">¿encontraste el easter egg? 👾</span>
+        <span class="en">found the easter egg? 👾</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Blog modals ───────────────────────────────────────────────── -->
+<div class="blog-overlay" id="blog-overlay">
+  <div class="blog-modal" id="blog-modal">
+    <button class="blog-modal-close" id="blog-modal-close">✕ cerrar</button>
+    <div id="blog-modal-content"></div>
+  </div>
+</div>
+
+<!-- ─── Script ────────────────────────────────────────────────────── -->
+<script>
+(function () {
+  const html = document.documentElement;
+
+  // ── Theme ────────────────────────────────────────────────────────
+  // Already set by inline script in <head> — just sync icons
+  syncThemeIcons(html.getAttribute('data-theme'));
+
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    syncThemeIcons(next);
+  });
+
+  function syncThemeIcons(theme) {
+    document.getElementById('icon-moon').classList.toggle('hidden', theme === 'light');
+    document.getElementById('icon-sun').classList.toggle('hidden', theme === 'dark');
+  }
+
+  // ── Language ─────────────────────────────────────────────────────
+  syncLangLabel(html.getAttribute('data-lang'));
+
+  document.getElementById('lang-toggle').addEventListener('click', function () {
+    const next = html.getAttribute('data-lang') === 'es' ? 'en' : 'es';
+    html.setAttribute('data-lang', next);
+    localStorage.setItem('lang', next);
+    html.lang = next;
+    syncLangLabel(next);
+  });
+
+  function syncLangLabel(lang) {
+    document.getElementById('lang-label').textContent = lang === 'es' ? 'EN' : 'ES';
+  }
+
+  // ── Music player ─────────────────────────────────────────────────
+  const musicFrame = document.getElementById('music-frame');
+  let musicOpen = true;
+
+  function toggleMusic() {
+    musicOpen = !musicOpen;
+    musicFrame.classList.toggle('visible', musicOpen);
+  }
+
+  document.getElementById('music-toggle-btn').addEventListener('click', toggleMusic);
+  document.getElementById('music-btn').addEventListener('click', toggleMusic);
+
+  // ── Egg hint button ───────────────────────────────────────────────
+  (function () {
+    var eggBtn     = document.getElementById('egg-btn');
+    var eggTooltip = document.getElementById('egg-tooltip');
+    var eggTimer;
+
+    eggBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = eggTooltip.classList.toggle('open');
+      clearTimeout(eggTimer);
+      if (isOpen) {
+        eggTimer = setTimeout(function () { eggTooltip.classList.remove('open'); }, 8000);
+      }
+    });
+
+    document.addEventListener('click', function () {
+      eggTooltip.classList.remove('open');
+      clearTimeout(eggTimer);
+    });
+  })();
+
+  // ── Progress bar + back to top ───────────────────────────────────
+  const progressBar = document.getElementById('progress-bar');
+  const backToTop = document.getElementById('back-to-top');
+  document.addEventListener('scroll', function () {
+    const scrolled = document.documentElement.scrollTop;
+    const total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    progressBar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+    backToTop.classList.toggle('visible', scrolled > 300);
+  }, { passive: true });
+  backToTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ── Service Worker ───────────────────────────────────────────────
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function () {});
+    });
+  }
+
+  // ── Hero reveal on load ──────────────────────────────────────────
+  window.addEventListener('load', function () {
+    document.getElementById('hero').classList.add('revealed');
+  });
+
+  // ── Copy email ───────────────────────────────────────────────────
+  document.getElementById('copy-email-btn').addEventListener('click', function () {
+    navigator.clipboard.writeText('hola@alexelgueta.me').then(function () {
+      const btn = document.getElementById('copy-email-btn');
+      btn.classList.add('did-copy');
+      setTimeout(function () { btn.classList.remove('did-copy'); }, 2000);
+    });
+  });
+
+  // ── Custom cursor ────────────────────────────────────────────────
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', function (e) {
+    cursor.style.transform = 'translate(' + (e.clientX - 2) + 'px, ' + e.clientY + 'px)';
+  }, { passive: true });
+
+  // ── Scroll fade-in (IntersectionObserver) ────────────────────────
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(function (el) { observer.observe(el); });
+
+  // ── Years counter animation ──────────────────────────────────────
+  const yearsFromStart = new Date().getFullYear() - 2020;
+
+  // ── Age (born June 7, 1996) ──────────────────────────────────────
+  (function () {
+    const birth = new Date(1996, 5, 7); // month is 0-indexed
+    const now = new Date();
+    let age = now.getFullYear() - birth.getFullYear();
+    const hasBirthdayPassed = now.getMonth() > birth.getMonth() ||
+      (now.getMonth() === birth.getMonth() && now.getDate() >= birth.getDate());
+    if (!hasBirthdayPassed) age--;
+    document.getElementById('age-count').textContent = age;
+    document.getElementById('age-count-en').textContent = age;
+  })();
+  const counters = [
+    document.getElementById('years-count'),
+    document.getElementById('years-count-en')
+  ];
+  const badgeEl = document.querySelector('.hero-badge');
+
+  const counterObserver = new IntersectionObserver(function (entries) {
+    if (!entries[0].isIntersecting) return;
+    counterObserver.disconnect();
+    let current = 0;
+    const step = Math.ceil(yearsFromStart / 20);
+    const interval = setInterval(function () {
+      current = Math.min(current + step, yearsFromStart);
+      counters.forEach(function (c) { if (c) c.textContent = current; });
+      if (current >= yearsFromStart) clearInterval(interval);
+    }, 60);
+  }, { threshold: 0.5 });
+  if (badgeEl) counterObserver.observe(badgeEl);
+
+  // ── Blog posts data ──────────────────────────────────────────────
+  const posts = {
+    post1: {
+      es: {
+        title: 'La IA no te va a reemplazar. El dev que usa IA sí.',
+        date: 'Marzo 2026 · 5 min de lectura',
+        body: `
+          <p>Basta de debatir si la IA va a reemplazar a los devs. Esa pregunta ya está respondida: <strong>no</strong>. La pregunta correcta es otra: ¿vas a ser el dev que sabe usarla o el que le tiene miedo?</p>
+          <h3>El problema no es la herramienta</h3>
+          <p>La mayoría usa la IA como un Google glorificado. Le piden código sin entender qué piden, copian la respuesta y se preguntan por qué no funciona. Eso no es usar IA — es delegar el pensamiento.</p>
+          <p>Un buen dev con IA es como un arquitecto con AutoCAD: la herramienta acelera, pero el criterio es tuyo. <strong>Si no tenés criterio, la IA solo va a acelerar tus errores.</strong></p>
+          <h3>Lo que sí cambia</h3>
+          <p>Lo que la IA sí elimina es el trabajo de baja cognición: boilerplate, búsquedas repetitivas, patrones conocidos. Eso libera tiempo para lo que realmente importa: diseño, arquitectura, decisiones.</p>
+          <p>El dev del futuro no escribe menos código. Toma mejores decisiones más rápido. Y eso requiere más fundamentos, no menos.</p>
+          <h3>Conclusión</h3>
+          <p>Aprende a usar Claude Code, Cursor, Copilot — lo que sea. Pero primero entendé qué es un closure, cómo funciona el event loop, qué es una Promise. Sin eso, solo vas a generar basura más rápido.</p>
+        `
+      },
+      en: {
+        title: 'AI won\'t replace you. The dev who uses AI will.',
+        date: 'March 2026 · 5 min read',
+        body: `
+          <p>Stop debating whether AI will replace devs. That question is already answered: <strong>no</strong>. The real question is: will you be the dev who knows how to use it, or the one who fears it?</p>
+          <h3>The problem isn't the tool</h3>
+          <p>Most people use AI like a glorified Google. They ask for code without understanding what they're asking, copy the response, and wonder why it doesn't work. That's not using AI — it's delegating thought.</p>
+          <p>A good dev with AI is like an architect with AutoCAD: the tool accelerates, but the judgment is yours. <strong>If you have no judgment, AI will just accelerate your mistakes.</strong></p>
+          <h3>What actually changes</h3>
+          <p>What AI does eliminate is low-cognition work: boilerplate, repetitive searches, known patterns. That frees time for what actually matters: design, architecture, decisions.</p>
+          <p>The future dev doesn't write less code. They make better decisions faster. And that requires more fundamentals, not fewer.</p>
+          <h3>Conclusion</h3>
+          <p>Learn to use Claude Code, Cursor, Copilot — whatever. But first understand what a closure is, how the event loop works, what a Promise is. Without that, you'll just produce garbage faster.</p>
+        `
+      }
+    },
+    post2: {
+      es: {
+        title: 'Sin bases no hay futuro: lo que React no te enseña',
+        date: 'Febrero 2026 · 7 min de lectura',
+        body: `
+          <p>Todos los días hay alguien en internet preguntando cómo hacer X en React sin saber qué es el DOM. Es el equivalente a querer manejar una Fórmula 1 sin saber qué es un embrague.</p>
+          <h3>El orden correcto</h3>
+          <p>Antes de React, JavaScript. Antes de JavaScript, HTML y CSS. Antes de CSS animations, el box model. <strong>El orden importa porque el conocimiento es acumulativo.</strong> Saltarte pasos no te hace más rápido — te hace más frágil.</p>
+          <p>Cuando algo falla en producción a las 3am, el framework no te va a salvar. Te va a salvar entender qué está pasando realmente.</p>
+          <h3>Lo que React oculta</h3>
+          <p>React es una capa de abstracción sobre el DOM. Es muy buena, pero es una abstracción. Cuando el virtual DOM hace algo inesperado, cuando un re-render explota el performance, cuando un useEffect no se comporta como pensabas — en ese momento necesitás entender qué hay debajo.</p>
+          <p>Los mejores devs de React que conozco no son los que más hooks saben. Son los que entienden JavaScript profundamente y usan React como una herramienta, no como una religión.</p>
+          <h3>Por dónde empezar</h3>
+          <p>Lee la spec de JavaScript. Entiende el event loop. Aprende qué es el scope, el closure, el prototipo. Juega con el DOM puro. Después aprendé React — y lo vas a entender de verdad.</p>
+        `
+      },
+      en: {
+        title: 'No foundations, no future: what React doesn\'t teach you',
+        date: 'February 2026 · 7 min read',
+        body: `
+          <p>Every day someone on the internet asks how to do X in React without knowing what the DOM is. It's the equivalent of wanting to drive a Formula 1 without knowing what a clutch is.</p>
+          <h3>The right order</h3>
+          <p>Before React, JavaScript. Before JavaScript, HTML and CSS. Before CSS animations, the box model. <strong>Order matters because knowledge is cumulative.</strong> Skipping steps doesn't make you faster — it makes you more fragile.</p>
+          <p>When something breaks in production at 3am, the framework won't save you. Understanding what's actually happening will.</p>
+          <h3>What React hides</h3>
+          <p>React is an abstraction layer over the DOM. It's a very good one, but it's still an abstraction. When the virtual DOM does something unexpected, when a re-render kills performance, when a useEffect doesn't behave as expected — that's when you need to understand what's underneath.</p>
+          <p>The best React devs I know aren't the ones who know the most hooks. They're the ones who deeply understand JavaScript and use React as a tool, not a religion.</p>
+          <h3>Where to start</h3>
+          <p>Read the JavaScript spec. Understand the event loop. Learn about scope, closures, prototypes. Play with the raw DOM. Then learn React — and you'll actually understand it.</p>
+        `
+      }
+    },
+    post3: {
+      es: {
+        title: 'Claude Code cambió cómo trabajo. Para siempre.',
+        date: 'Enero 2026 · 4 min de lectura',
+        body: `
+          <p>Probé Copilot, Cursor, Cody, todos los autocompletes del mundo. Ninguno me cambió el flujo de trabajo de verdad. Claude Code sí.</p>
+          <h3>No es autocomplete</h3>
+          <p>La diferencia fundamental es el contexto. Claude Code entiende tu proyecto completo, no solo el archivo abierto. Puede refactorizar a través de múltiples archivos, escribir tests que tienen sentido, explicar decisiones de arquitectura.</p>
+          <p><strong>Es como tener un pair programmer sénior que siempre está disponible, nunca se cansa y no tiene ego.</strong></p>
+          <h3>Cómo lo uso</h3>
+          <p>No le pido código sin pensar. Le doy contexto: "estamos usando Clean Architecture, la capa de dominio no puede depender de infraestructura, necesito implementar este caso de uso". Ahí el resultado es otro.</p>
+          <p>También lo uso para revisar mis propias decisiones: le explico mi enfoque y le pido que me diga qué estoy pasando por alto. A veces me sorprende.</p>
+          <h3>El futuro</h3>
+          <p>No creo que los devs vayan a desaparecer. Creo que vamos a escribir menos código y tomar mejores decisiones. Y eso, honestamente, suena bien.</p>
+        `
+      },
+      en: {
+        title: 'Claude Code changed how I work. Forever.',
+        date: 'January 2026 · 4 min read',
+        body: `
+          <p>I tried Copilot, Cursor, Cody, every autocomplete in the world. None of them truly changed my workflow. Claude Code did.</p>
+          <h3>It's not autocomplete</h3>
+          <p>The fundamental difference is context. Claude Code understands your entire project, not just the open file. It can refactor across multiple files, write tests that actually make sense, explain architectural decisions.</p>
+          <p><strong>It's like having a senior pair programmer who's always available, never gets tired, and has no ego.</strong></p>
+          <h3>How I use it</h3>
+          <p>I don't mindlessly ask for code. I give context: "we're using Clean Architecture, the domain layer can't depend on infrastructure, I need to implement this use case". That's when the result is different.</p>
+          <p>I also use it to review my own decisions: I explain my approach and ask it to tell me what I'm missing. Sometimes it surprises me.</p>
+          <h3>The future</h3>
+          <p>I don't think devs will disappear. I think we'll write less code and make better decisions. And honestly, that sounds good.</p>
+        `
+      }
+    }
+  };
+
+  // ── Blog modal logic ─────────────────────────────────────────────
+  const overlay = document.getElementById('blog-overlay');
+  const modalContent = document.getElementById('blog-modal-content');
+  const closeBtn = document.getElementById('blog-modal-close');
+
+  document.querySelectorAll('.blog-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      const postId = card.getAttribute('data-post');
+      const lang = html.getAttribute('data-lang') || 'es';
+      const post = posts[postId][lang];
+      modalContent.innerHTML = '<h2>' + post.title + '</h2><p class="meta">' + post.date + '</p>' + post.body;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // ── Keyboard shortcuts ───────────────────────────────────────────
+  const shortcutsOverlay = document.getElementById('shortcuts-overlay');
+
+  function openShortcuts() { shortcutsOverlay.classList.add('open'); }
+  function closeShortcuts() { shortcutsOverlay.classList.remove('open'); }
+
+  document.getElementById('shortcuts-close').addEventListener('click', closeShortcuts);
+  shortcutsOverlay.addEventListener('click', function (e) {
+    if (e.target === shortcutsOverlay) closeShortcuts();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    const tag = document.activeElement.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+
+    switch (e.key.toLowerCase()) {
+      case 't':
+        document.getElementById('theme-toggle').click();
+        break;
+      case 'l':
+        document.getElementById('lang-toggle').click();
+        break;
+      case 'm':
+        toggleMusic();
+        break;
+      case 'x':
+        if (window._openTerminal) {
+          var termEl2 = document.getElementById('terminal-mode');
+          termEl2 && termEl2.classList.contains('open') ? window._closeTerminal() : window._openTerminal();
+        }
+        break;
+      case 'g':
+        window.open('https://github.com/kanazawa-dev', '_blank');
+        break;
+      case 'c':
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        break;
+      case '?':
+        shortcutsOverlay.classList.contains('open') ? closeShortcuts() : openShortcuts();
+        break;
+      case 'escape': {
+        const ee = document.getElementById('easter-egg');
+        if (ee && ee.classList.contains('open')) { closeEasterEgg(); break; }
+        const tm = document.getElementById('terminal-mode');
+        if (tm && tm.classList.contains('open')) { if (window._closeTerminal) window._closeTerminal(); break; }
+        closeShortcuts();
+        closeModal();
+        if (document.documentElement.scrollTop > 0) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        break;
+      }
+    }
+  });
+
+  // ── Active nav link ──────────────────────────────────────────────
+  (function () {
+    var navLinks = document.querySelectorAll('.nav-link');
+    var sections = ['about','now','stack','projects','blog','testimonials','contact','reflection'];
+    var navObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var id = entry.target.id;
+        navLinks.forEach(function (l) {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+      });
+    }, { threshold: 0.35 });
+    sections.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) navObserver.observe(el);
+    });
+  })();
+
+  // ── CV download ───────────────────────────────────────────────────
+  var cvBtn = document.getElementById('cv-btn');
+  cvBtn.addEventListener('click', function () { window.print(); });
+  cvBtn.addEventListener('mouseenter', function () {
+    cvBtn.style.borderColor = 'var(--accent)';
+    cvBtn.style.color = 'var(--accent)';
+  });
+  cvBtn.addEventListener('mouseleave', function () {
+    cvBtn.style.borderColor = 'var(--border)';
+    cvBtn.style.color = 'var(--text-muted)';
+  });
+
+  // ── Section dots ─────────────────────────────────────────────────
+  (function () {
+    var dots = document.querySelectorAll('.s-dot');
+    var sectionIds = Array.from(dots).map(function (d) { return d.dataset.target; });
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        var el = document.getElementById(dot.dataset.target);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    var dotObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          dots.forEach(function (d) {
+            d.classList.toggle('active', d.dataset.target === id);
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sectionIds.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) dotObserver.observe(el);
+    });
+  })();
+
+  // ── Terminal mode ─────────────────────────────────────────────────
+  (function () {
+    var termEl    = document.getElementById('terminal-mode');
+    var termOut   = document.getElementById('term-output');
+    var termIn    = document.getElementById('term-input');
+    var termClose = document.getElementById('term-close');
+    var history   = [];
+    var histIdx   = -1;
+
+    var WELCOME = [
+      { t: 'head', v: '  ██╗  ██╗ █████╗ ███╗  ██╗ █████╗ ███████╗ █████╗ ██╗    ██╗ █████╗' },
+      { t: 'head', v: '  ██║ ██╔╝██╔══██╗████╗ ██║██╔══██╗╚════██║██╔══██╗██║    ██║██╔══██╗' },
+      { t: 'head', v: '  █████╔╝ ███████║██╔██╗██║███████║    ██╔╝███████║██║ █╗ ██║███████║' },
+      { t: 'head', v: '  ██╔═██╗ ██╔══██║██║╚████║██╔══██║   ██╔╝ ██╔══██║██║███╗██║██╔══██║' },
+      { t: 'head', v: '  ██║  ██╗██║  ██║██║ ╚███║██║  ██║   ██║  ██║  ██║╚███╔███╔╝██║  ██║' },
+      { t: 'head', v: '  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚══╝╚═╝  ╚═╝  ╚═╝  ╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═╝' },
+      { t: 'dim',  v: '' },
+      { t: 'muted',v: '  Alex Elgueta · Fullstack Engineer · Chile' },
+      { t: 'dim',  v: '  ─────────────────────────────────────────────────────────' },
+      { t: '',     v: '' },
+      { t: 'ok',   v: '  Bienvenido. Escribe help para ver los comandos disponibles.' },
+      { t: '',     v: '' },
+    ];
+
+    var COMMANDS = {
+      help: function () {
+        return [
+          { t: 'head', v: 'Comandos disponibles:' },
+          { t: '',     v: '' },
+          { t: 'ok',   v: '  whoami          →  perfil completo' },
+          { t: 'ok',   v: '  ls              →  listar secciones del portfolio' },
+          { t: 'ok',   v: '  cat about       →  leer sección about' },
+          { t: 'ok',   v: '  cat now         →  qué estoy haciendo ahora' },
+          { t: 'ok',   v: '  cat stack       →  stack tecnológico' },
+          { t: 'ok',   v: '  cat projects    →  proyectos' },
+          { t: 'ok',   v: '  cat reflection  →  reflexión final' },
+          { t: 'ok',   v: '  cat cv          →  currículum en texto plano' },
+          { t: 'ok',   v: '  ascii           →  arte ASCII' },
+          { t: 'ok',   v: '  cd <sección>    →  navegar a una sección y cerrar' },
+          { t: 'ok',   v: '  date            →  fecha actual' },
+          { t: 'ok',   v: '  uptime          →  tiempo en esto' },
+          { t: 'ok',   v: '  clear           →  limpiar terminal' },
+          { t: 'ok',   v: '  exit / q        →  cerrar terminal' },
+          { t: '',     v: '' },
+        ];
+      },
+      whoami: function () {
+        return [
+          { t: 'accent', v: '  Alex Elgueta  (kanazawa)' },
+          { t: '',       v: '' },
+          { t: '',       v: '  Fullstack Engineer obsesionado con código que dura.' },
+          { t: '',       v: '  CEO de Surco · CTO de Portal de Especialistas' },
+          { t: '',       v: '  Fullstack en Karibu' },
+          { t: '',       v: '' },
+          { t: 'muted',  v: '  Stack:     TypeScript · Go · React · Next.js · Clean Architecture' },
+          { t: 'muted',  v: '  Tools:     Claude Code · LazyVim · Ghostty · Zellij' },
+          { t: 'muted',  v: '  Location:  Chile 🇨🇱' },
+          { t: 'muted',  v: '  Since:     2020 (6+ años en esto)' },
+          { t: '',       v: '' },
+          { t: 'muted',  v: '  GitHub:    github.com/kanazawa-dev' },
+          { t: 'muted',  v: '  Email:     hola@alexelgueta.me' },
+          { t: '',       v: '' },
+        ];
+      },
+      ls: function () {
+        return [
+          { t: 'head',  v: 'Secciones del portfolio:' },
+          { t: '',      v: '' },
+          { t: 'ok',    v: '  drwxr-xr-x  hero          →  inicio / presentación' },
+          { t: 'ok',    v: '  drwxr-xr-x  about         →  sobre mí' },
+          { t: 'ok',    v: '  drwxr-xr-x  now           →  qué estoy haciendo ahora' },
+          { t: 'ok',    v: '  drwxr-xr-x  stack         →  herramientas y tecnologías' },
+          { t: 'ok',    v: '  drwxr-xr-x  projects      →  proyectos personales y laborales' },
+          { t: 'ok',    v: '  drwxr-xr-x  blog          →  artículos y reflexiones técnicas' },
+          { t: 'ok',    v: '  drwxr-xr-x  testimonials  →  referencias de personas reales' },
+          { t: 'ok',    v: '  drwxr-xr-x  contact       →  hablar de código o tomar café' },
+          { t: 'ok',    v: '  drwxr-xr-x  reflection    →  filosofía de trabajo' },
+          { t: '',      v: '' },
+          { t: 'muted', v: '  Usa cd <sección> para navegar.' },
+          { t: '',      v: '' },
+        ];
+      },
+      'cat about': function () {
+        return [
+          { t: 'head',   v: '── about ─────────────────────────────────────────' },
+          { t: '',       v: '' },
+          { t: '',       v: '  Fullstack Engineer obsesionado con código que dura.' },
+          { t: '',       v: '  Fundamentos sobre frameworks, siempre.' },
+          { t: '',       v: '' },
+          { t: '',       v: '  Creo que el buen café y la buena música son requisitos' },
+          { t: '',       v: '  mínimos para escribir código decente.' },
+          { t: '',       v: '' },
+          { t: '',       v: '  Mi motor real: mi pareja y mis dos hijas.' },
+          { t: '',       v: '' },
+        ];
+      },
+      'cat now': function () {
+        return [
+          { t: 'head',   v: '── now ───────────────────────────────────────────' },
+          { t: '',       v: '' },
+          { t: 'ok',     v: '  [construyendo]  Surco — 5 clientes beta' },
+          { t: '',       v: '                  AgriTech para Latinoamérica. Next.js + NestJS.' },
+          { t: '',       v: '' },
+          { t: 'ok',     v: '  [producción]    Portal de Especialistas — cientos de usuarios' },
+          { t: '',       v: '                  Marketplace de reparaciones. Escalando arquitectura.' },
+          { t: '',       v: '' },
+          { t: 'accent', v: '  [leyendo]       Más allá del bien y del mal — Nietzsche (solo)' },
+          { t: '',       v: '                  Orgullo y Prejuicio — Austen (con mi pareja)' },
+          { t: '',       v: '' },
+          { t: 'muted',  v: '  Actualizado: Marzo 2026' },
+          { t: '',       v: '' },
+        ];
+      },
+      'cat stack': function () {
+        return [
+          { t: 'head',   v: '── stack ─────────────────────────────────────────' },
+          { t: '',       v: '' },
+          { t: 'accent', v: '  Languages:    TypeScript · Go · Rust · Lua · C++' },
+          { t: 'ok',     v: '  Frontend:     React · Next.js · Astro · Vue · Tailwind' },
+          { t: '',       v: '  State:        Redux · Signals · Zustand' },
+          { t: 'muted',  v: '  Architecture: Clean · Hexagonal · Screaming' },
+          { t: '',       v: '  Infra:        Docker · Vercel · Railway · GCP · AWS' },
+          { t: '',       v: '                Turbo · pnpm · Prisma · PostgreSQL · Redis' },
+          { t: 'accent', v: '  Daily:        Claude Code · LazyVim · Ghostty · Zellij · Starship' },
+          { t: '',       v: '' },
+        ];
+      },
+      'cat projects': function () {
+        return [
+          { t: 'head',   v: '── projects ──────────────────────────────────────' },
+          { t: '',       v: '' },
+          { t: 'accent', v: '  Surco              [private]  AgriTech · Next.js + NestJS' },
+          { t: 'accent', v: '  Portal Especialistas[private]  Marketplace · CTO & Co-fundador' },
+          { t: 'accent', v: '  Karibu              [private]  UI skills para agentes de IA' },
+          { t: 'ok',     v: '  open-banking-chile  [public]   github.com/kanazawa-dev' },
+          { t: 'ok',     v: '  dotfiles-2026       [public]   macOS dev env · Neovim + Ghostty' },
+          { t: 'ok',     v: '  obsidian-cli        [public]   CLI para Obsidian desde la terminal' },
+          { t: '',       v: '' },
+        ];
+      },
+      'cat cv': function () {
+        var age = (function () {
+          var b = new Date(1996, 5, 7), n = new Date();
+          var a = n.getFullYear() - b.getFullYear();
+          if (n.getMonth() < b.getMonth() || (n.getMonth() === b.getMonth() && n.getDate() < b.getDate())) a--;
+          return a;
+        })();
+        return [
+          { t: 'head',   v: '╔══════════════════════════════════════════════════════╗' },
+          { t: 'head',   v: '║  ALEX ELGUETA — FULLSTACK ENGINEER                   ║' },
+          { t: 'head',   v: '╚══════════════════════════════════════════════════════╝' },
+          { t: '',       v: '' },
+          { t: 'muted',  v: '  hola@alexelgueta.me  ·  github.com/kanazawa-dev' },
+          { t: 'muted',  v: '  linkedin.com/in/alexelguetar  ·  Chile  ·  ' + age + ' años' },
+          { t: '',       v: '' },
+          { t: 'accent', v: '  EXPERIENCIA' },
+          { t: 'dim',    v: '  ──────────────────────────────────────────────────' },
+          { t: '',       v: '  CEO & Fundador — Surco                2022–presente' },
+          { t: 'muted',  v: '  AgriTech para LATAM. Next.js + NestJS monorepo.' },
+          { t: '',       v: '' },
+          { t: '',       v: '  CTO & Co-fundador — Portal de Especialistas  2022–presente' },
+          { t: 'muted',  v: '  Marketplace activo, cientos de usuarios en producción.' },
+          { t: '',       v: '' },
+          { t: '',       v: '  Fullstack Engineer — Karibu             presente' },
+          { t: 'muted',  v: '  UI skills ecosystem para agentes de IA.' },
+          { t: '',       v: '' },
+          { t: 'accent', v: '  STACK' },
+          { t: 'dim',    v: '  ──────────────────────────────────────────────────' },
+          { t: '',       v: '  TypeScript · Go · Rust  |  React · Next.js · Astro · Vue' },
+          { t: '',       v: '  NestJS · PostgreSQL · Redis · Docker · AWS · GCP' },
+          { t: '',       v: '  Clean · Hexagonal · Screaming Architecture' },
+          { t: '',       v: '' },
+          { t: 'accent', v: '  OPEN SOURCE' },
+          { t: 'dim',    v: '  ──────────────────────────────────────────────────' },
+          { t: '',       v: '  open-banking-chile  ·  obsidian-cli  ·  dotfiles-2026' },
+          { t: '',       v: '' },
+        ];
+      },
+      ascii: function () {
+        return [
+          { t: 'head',   v: "  ██╗  ██╗ █████╗ ███╗  ██╗ █████╗ ███████╗ █████╗ ██╗    ██╗ █████╗ " },
+          { t: 'head',   v: "  ██║ ██╔╝██╔══██╗████╗ ██║██╔══██╗╚════██║██╔══██╗██║    ██║██╔══██╗" },
+          { t: 'head',   v: "  █████╔╝ ███████║██╔██╗██║███████║    ██╔╝███████║██║ █╗ ██║███████║" },
+          { t: 'head',   v: "  ██╔═██╗ ██╔══██║██║╚████║██╔══██║   ██╔╝ ██╔══██║██║███╗██║██╔══██║" },
+          { t: 'head',   v: "  ██║  ██╗██║  ██║██║ ╚███║██║  ██║   ██║  ██║  ██║╚███╔███╔╝██║  ██║" },
+          { t: 'head',   v: "  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚══╝╚═╝  ╚═╝  ╚═╝  ╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═╝" },
+          { t: '',       v: '' },
+          { t: 'accent', v: "       ░░░   ██████╗ ███████╗██╗   ██╗   ░░░" },
+          { t: 'accent', v: "       ░░░   ██╔══██╗██╔════╝██║   ██║   ░░░" },
+          { t: 'accent', v: "       ░░░   ██║  ██║█████╗  ██║   ██║   ░░░" },
+          { t: 'accent', v: "       ░░░   ██║  ██║██╔══╝  ╚██╗ ██╔╝   ░░░" },
+          { t: 'accent', v: "       ░░░   ██████╔╝███████╗ ╚████╔╝    ░░░" },
+          { t: 'accent', v: "       ░░░   ╚═════╝ ╚══════╝  ╚═══╝     ░░░" },
+          { t: '',       v: '' },
+          { t: 'muted',  v: "  > fullstack engineer  ·  chile 🇨🇱  ·  2026" },
+          { t: 'muted',  v: '  > "build in silence. let success make the noise."' },
+          { t: '',       v: '' },
+        ];
+      },
+      'cat reflection': function () {
+        return [
+          { t: 'head',   v: '── reflection ────────────────────────────────────' },
+          { t: '',       v: '' },
+          { t: '',       v: '  Hay cosas que no puedo cambiar desde una terminal.' },
+          { t: '',       v: '  Pero puedo construir herramientas honestas' },
+          { t: '',       v: '  para personas reales. Y eso, de a poco,' },
+          { t: '',       v: '  también es cambiar algo.' },
+          { t: '',       v: '' },
+          { t: 'accent', v: '  — "Construye en silencio.' },
+          { t: 'accent', v: '     Deja que el éxito haga el ruido."' },
+          { t: '',       v: '' },
+        ];
+      },
+      date: function () {
+        return [{ t: '', v: '  ' + new Date().toLocaleString('es-CL', { timeZone: 'America/Santiago', dateStyle: 'full', timeStyle: 'short' }) }, { t: '', v: '' }];
+      },
+      uptime: function () {
+        var years = new Date().getFullYear() - 2020;
+        return [
+          { t: 'ok', v: '  ' + years + ' años escribiendo código.' },
+          { t: '', v: '  (Desde 2020. Sin planes de parar.)' },
+          { t: '', v: '' },
+        ];
+      },
+    };
+
+    function termPrint(lines) {
+      lines.forEach(function (l) {
+        var span = document.createElement('span');
+        span.className = 'tl' + (l.t ? ' ' + l.t : '');
+        span.textContent = l.v;
+        termOut.appendChild(span);
+      });
+      termOut.scrollTop = termOut.scrollHeight;
+    }
+
+    function termClear() {
+      termOut.innerHTML = '';
+    }
+
+    function openTerminal() {
+      termEl.classList.add('open');
+      termClear();
+      termPrint(WELCOME);
+      setTimeout(function () { termIn.focus(); }, 50);
+    }
+
+    function closeTerminal() {
+      termEl.classList.remove('open');
+      termIn.value = '';
+    }
+
+    function runCommand(raw) {
+      var cmd = raw.trim().toLowerCase();
+      if (!cmd) return;
+
+      history.unshift(raw.trim());
+      histIdx = -1;
+
+      // echo the command
+      var echo = document.createElement('span');
+      echo.className = 'tl cmd';
+      echo.textContent = 'kanazawa@portfolio ~ $ ' + raw.trim();
+      termOut.appendChild(echo);
+
+      if (cmd === 'clear') { termClear(); return; }
+      if (cmd === 'exit' || cmd === 'q') { closeTerminal(); return; }
+
+      if (COMMANDS[cmd]) {
+        termPrint(COMMANDS[cmd]());
+        return;
+      }
+
+      // cd <section>
+      if (cmd.startsWith('cd ')) {
+        var target = cmd.slice(3).trim();
+        var el = document.getElementById(target);
+        if (el) {
+          termPrint([{ t: 'ok', v: '  → navegando a ' + target + '...' }, { t: '', v: '' }]);
+          setTimeout(function () {
+            closeTerminal();
+            el.scrollIntoView({ behavior: 'smooth' });
+          }, 600);
+        } else {
+          termPrint([{ t: 'warn', v: '  bash: cd: ' + target + ': No such directory' }, { t: '', v: '' }]);
+        }
+        return;
+      }
+
+      termPrint([
+        { t: 'warn', v: '  bash: ' + cmd + ': command not found' },
+        { t: 'muted', v: '  Escribe help para ver los comandos disponibles.' },
+        { t: '', v: '' },
+      ]);
+    }
+
+    termIn.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        runCommand(termIn.value);
+        termIn.value = '';
+        e.preventDefault();
+      } else if (e.key === 'ArrowUp') {
+        if (histIdx < history.length - 1) { histIdx++; termIn.value = history[histIdx]; }
+        e.preventDefault();
+      } else if (e.key === 'ArrowDown') {
+        if (histIdx > 0) { histIdx--; termIn.value = history[histIdx]; }
+        else { histIdx = -1; termIn.value = ''; }
+        e.preventDefault();
+      } else if (e.key === 'Escape') {
+        closeTerminal();
+        e.stopPropagation();
+      }
+    });
+
+    termClose.addEventListener('click', closeTerminal);
+    termEl.addEventListener('click', function (e) { if (e.target === termEl) termIn.focus(); });
+
+    document.getElementById('term-btn').addEventListener('click', function () {
+      termEl.classList.contains('open') ? closeTerminal() : openTerminal();
+    });
+
+    window._openTerminal  = openTerminal;
+    window._closeTerminal = closeTerminal;
+  })();
+
+  // ── Easter egg: console puzzle ────────────────────────────────────
+  window.kanazawa = {
+    _unlocked: false,
+    hint: function () {
+      console.log(
+        '%c\n╔══════════════════════════════════════════╗\n║  KANAZAWA SYSTEMS — AUTHENTICATION       ║\n╚══════════════════════════════════════════╝\n',
+        'color:#E07855;font-family:monospace;font-size:13px'
+      );
+      console.log(
+        '%c> Se requiere clave de acceso.\n> Decodifica la siguiente secuencia:\n\n    "\\x5a\\x6d\\x68\\x6c\\x63\\x47\\x49\\x3d"\n\n> Hay más de una capa.\n> Una vez que tengas la clave final:\n    kanazawa.unlock(clave)\n',
+        'color:#00ff41;font-family:monospace;font-size:13px'
+      );
+    },
+    unlock: function (key) {
+      if (key === 'surco') {
+        this._unlocked = true;
+        console.log('%c\n> ACCESO CONCEDIDO ██████████ 100%\n> Iniciando secuencia de arranque...\n', 'color:#E07855;font-family:monospace;font-size:14px');
+        activateEasterEgg();
+      } else {
+        console.log('%c> ACCESO DENEGADO.\n> La clave tiene 3 capas de cifrado. Sigue decodificando.\n> kanazawa.hint() para la pista inicial.\n', 'color:#ff4444;font-family:monospace;font-size:13px');
+      }
+    }
+  };
+
+  function activateEasterEgg() {
+    var overlay = document.getElementById('easter-egg');
+    if (!overlay) return;
+    overlay.classList.add('open');
+    var lines = overlay.querySelectorAll('.ee-line');
+    var delay = 0;
+    lines.forEach(function (line, i) {
+      var isEmpty = line.textContent.trim() === '';
+      var wait = isEmpty ? 60 : 180;
+      setTimeout(function () {
+        line.classList.add('show');
+        if (i === 7) {
+          setTimeout(function () {
+            var bar = document.getElementById('ee-bar-1');
+            if (bar) bar.classList.add('full');
+          }, 80);
+        }
+      }, delay);
+      delay += wait;
+    });
+  }
+
+  function closeEasterEgg() {
+    var overlay = document.getElementById('easter-egg');
+    if (!overlay) return;
+    overlay.classList.remove('open');
+    overlay.querySelectorAll('.ee-line').forEach(function (l) { l.classList.remove('show'); });
+    var bar = document.getElementById('ee-bar-1');
+    if (bar) bar.classList.remove('full');
+  }
+
+  // ── Console messages ──────────────────────────────────────────────
+  console.log('%c\n > kanazawa_\n', 'color:#E07855;font-family:monospace;font-size:20px;font-weight:bold');
+  console.log('%cHola, dev curioso 👋\nSi estás leyendo esto, probablemente somos del mismo tipo.\nEste portfolio está hecho con 0 frameworks — HTML, CSS y JS puro.\n', 'color:#A07060;font-family:monospace;font-size:13px');
+  console.log('%c¿Quieres hablar de código o tomar un café? → hola@alexelgueta.me', 'color:#E07855;font-family:monospace;font-size:12px');
+
+})();
+</script>
+
+<!-- ─── CV Print layout (solo visible en print) ──────────────── -->
+<div id="cv-print">
+  <div class="cv-name">Alex Elgueta</div>
+  <div class="cv-role-h">Fullstack Engineer</div>
+  <div class="cv-contacts">
+    hola@alexelgueta.me &nbsp;·&nbsp; github.com/kanazawa-dev &nbsp;·&nbsp;
+    linkedin.com/in/alexelguetar &nbsp;·&nbsp; alexelgueta.me &nbsp;·&nbsp; Chile
+  </div>
+  <hr class="cv-hr"/>
+
+  <div class="cv-sec">
+    <div class="cv-sec-title">Sobre mí</div>
+    <p>
+      Fullstack Engineer obsesionado con código que dura. Fundamentos sobre frameworks, siempre.
+      Creo en Clean Architecture, en separar responsabilidades y en escribir código que otro dev
+      pueda entender sin un mapa. Actualmente CEO de Surco, CTO de Portal de Especialistas
+      y Fullstack Engineer en Karibu.
+    </p>
+  </div>
+
+  <div class="cv-sec">
+    <div class="cv-sec-title">Experiencia</div>
+    <div class="cv-row">
+      <div class="cv-row-head">
+        <span class="cv-row-name">Surco — CEO &amp; Fundador</span>
+        <span class="cv-row-date">2022 — presente</span>
+      </div>
+      <div class="cv-row-desc">Plataforma AgriTech para Latinoamérica. Monorepo Next.js + NestJS. Desde el diseño de arquitectura hasta la gestión del equipo y los 5 clientes beta actuales.</div>
+      <div class="cv-row-tech">TypeScript · Next.js · NestJS · PostgreSQL · Docker</div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-row-head">
+        <span class="cv-row-name">Portal de Especialistas — CTO &amp; Co-fundador</span>
+        <span class="cv-row-date">2022 — presente</span>
+      </div>
+      <div class="cv-row-desc">Marketplace de reparaciones del hogar. Cientos de usuarios activos en producción. Liderando arquitectura, equipo y decisiones técnicas.</div>
+      <div class="cv-row-tech">TypeScript · React · Node.js · PostgreSQL · AWS</div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-row-head">
+        <span class="cv-row-name">Karibu — Fullstack Engineer</span>
+        <span class="cv-row-date">presente</span>
+      </div>
+      <div class="cv-row-desc">UI skills ecosystem para agentes de IA. Desarrollo fullstack con foco en interfaces conversacionales y componentes reutilizables.</div>
+      <div class="cv-row-tech">TypeScript · React · Next.js</div>
+    </div>
+  </div>
+
+  <div class="cv-sec cv-two-col">
+    <div>
+      <div class="cv-sec-title">Stack</div>
+      <div class="cv-tag-line"><span class="cv-tag-label">Languages </span> TypeScript · Go · Rust</div>
+      <div class="cv-tag-line"><span class="cv-tag-label">Frontend  </span> React · Next.js · Astro · Vue</div>
+      <div class="cv-tag-line"><span class="cv-tag-label">Backend   </span> Node.js · NestJS · PostgreSQL · Redis</div>
+      <div class="cv-tag-line"><span class="cv-tag-label">Infra     </span> Docker · Vercel · Railway · GCP · AWS</div>
+      <div class="cv-tag-line"><span class="cv-tag-label">Arch      </span> Clean · Hexagonal · Screaming</div>
+      <div class="cv-tag-line"><span class="cv-tag-label">Daily     </span> Claude Code · LazyVim · Ghostty · Zellij</div>
+    </div>
+    <div>
+      <div class="cv-sec-title">Proyectos open source</div>
+      <div class="cv-row">
+        <div class="cv-row-name">open-banking-chile</div>
+        <div class="cv-row-desc">Scrapers para bancos chilenos. github.com/kanazawa-dev</div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-row-name">dotfiles-2026</div>
+        <div class="cv-row-desc">macOS dev environment: Neovim, Ghostty, Zsh, Starship, Claude Code.</div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-row-name">obsidian-cli</div>
+        <div class="cv-row-desc">CLI para interactuar con Obsidian desde la terminal.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Easter egg terminal overlay ──────────────────────────── -->
+<div id="easter-egg">
+  <div class="ee-line"> KANAZAWA SYSTEMS · boot sequence v2026</div>
+  <div class="ee-line dim">────────────────────────────────────────────────────────────</div>
+  <div class="ee-line"></div>
+  <div class="ee-line muted">[SYS]  Verificando identidad...................... OK</div>
+  <div class="ee-line muted">[SYS]  Cargando módulos de usuario............... OK</div>
+  <div class="ee-line muted">[SYS]  TypeScript · Go · React · Next.js · Clean OK</div>
+  <div class="ee-line"></div>
+  <div class="ee-line muted">[BOOT] <span class="ee-bar" id="ee-bar-1"></span>  compilando...</div>
+  <div class="ee-line"></div>
+  <div class="ee-line accent">  ╔══════════════════════════════════════════════════════╗</div>
+  <div class="ee-line accent">  ║                                                      ║</div>
+  <div class="ee-line accent">  ║   ██████  ACCESO CONCEDIDO  ██████                   ║</div>
+  <div class="ee-line accent">  ║   Bienvenido, ingeniero curioso.                     ║</div>
+  <div class="ee-line accent">  ║                                                      ║</div>
+  <div class="ee-line accent">  ╚══════════════════════════════════════════════════════╝</div>
+  <div class="ee-line"></div>
+  <div class="ee-line white">&gt; Perfil     Alex Elgueta  /  kanazawa</div>
+  <div class="ee-line white">&gt; Roles      CEO @ Surco  ·  CTO @ Portal de Especialistas</div>
+  <div class="ee-line white">&gt; Stack      TypeScript · Go · React · Next.js · Clean Architecture</div>
+  <div class="ee-line white">&gt; Location   Chile 🇨🇱</div>
+  <div class="ee-line white">&gt; Uptime     29 años — y contando</div>
+  <div class="ee-line"></div>
+  <div class="ee-line muted">// "Build in silence."</div>
+  <div class="ee-line muted">// "Let success make the noise."</div>
+  <div class="ee-line"></div>
+  <div class="ee-line dim">────────────────────────────────────────────────────────────</div>
+  <div class="ee-exit">[ESC] salir</div>
+</div>
+
+</body>
+</html>

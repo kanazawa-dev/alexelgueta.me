@@ -1,0 +1,18 @@
+{
+  "name": "Alex Elgueta · Fullstack Engineer",
+  "short_name": "kanazawa_",
+  "description": "Portfolio de Alex Elgueta — Fullstack Engineer, CEO de Surco, CTO de Portal de Especialistas.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1C1410",
+  "theme_color": "#E07855",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://media.licdn.com/dms/image/v2/D4D03AQHwpvkXctTJhg/profile-displayphoto-scale_400_400/B4DZv_qLSVJ0Ag-/0/1769520805812?e=1776297600&v=beta&t=yDlXPjE30BIV08Iy7Rbt0Pno_D8FPvgnNyvNrxcPnQc",
+      "sizes": "400x400",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

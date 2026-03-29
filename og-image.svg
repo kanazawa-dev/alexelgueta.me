@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1C1410"/>
+      <stop offset="100%" stop-color="#2A1E16"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Accent border top -->
+  <rect x="0" y="0" width="1200" height="4" fill="#E07855"/>
+
+  <!-- Grid lines (subtle) -->
+  <line x1="0" y1="105" x2="1200" y2="105" stroke="#3D2A1F" stroke-width="1"/>
+  <line x1="0" y1="525" x2="1200" y2="525" stroke="#3D2A1F" stroke-width="1"/>
+  <line x1="80" y1="0" x2="80" y2="630" stroke="#3D2A1F" stroke-width="1"/>
+  <line x1="1120" y1="0" x2="1120" y2="630" stroke="#3D2A1F" stroke-width="1"/>
+
+  <!-- Logo -->
+  <text x="112" y="72" font-family="'Courier New', monospace" font-size="22" fill="#E07855" letter-spacing="2" font-weight="bold">&gt; kanazawa_</text>
+  <rect x="268" y="52" width="10" height="18" fill="#E07855" opacity="0.9"/>
+
+  <!-- Decorative terminal lines top-right -->
+  <text x="880" y="58" font-family="'Courier New', monospace" font-size="13" fill="#3D2A1F">// fullstack engineer</text>
+  <text x="880" y="78" font-family="'Courier New', monospace" font-size="13" fill="#3D2A1F">// chile · 2026</text>
+
+  <!-- Main name -->
+  <text x="112" y="310" font-family="Georgia, 'Times New Roman', serif" font-size="112" fill="#F5EDE8" font-weight="bold" letter-spacing="-2">Alex Elgueta</text>
+
+  <!-- Title -->
+  <text x="116" y="378" font-family="'Courier New', monospace" font-size="32" fill="#A07060" letter-spacing="3">FULLSTACK ENGINEER</text>
+
+  <!-- Accent line -->
+  <rect x="112" y="404" width="120" height="3" fill="#E07855"/>
+
+  <!-- Tags row -->
+  <rect x="112" y="438" width="160" height="34" rx="3" fill="none" stroke="#E07855" stroke-width="1"/>
+  <text x="192" y="461" font-family="'Courier New', monospace" font-size="14" fill="#E07855" text-anchor="middle">TypeScript</text>
+
+  <rect x="284" y="438" width="80" height="34" rx="3" fill="none" stroke="#A07ACA" stroke-width="1"/>
+  <text x="324" y="461" font-family="'Courier New', monospace" font-size="14" fill="#A07ACA" text-anchor="middle">React</text>
+
+  <rect x="376" y="438" width="60" height="34" rx="3" fill="none" stroke="#5AAABB" stroke-width="1"/>
+  <text x="406" y="461" font-family="'Courier New', monospace" font-size="14" fill="#5AAABB" text-anchor="middle">Go</text>
+
+  <rect x="448" y="438" width="200" height="34" rx="3" fill="none" stroke="#BB9A5A" stroke-width="1"/>
+  <text x="548" y="461" font-family="'Courier New', monospace" font-size="14" fill="#BB9A5A" text-anchor="middle">Clean Architecture</text>
+
+  <rect x="660" y="438" width="100" height="34" rx="3" fill="none" stroke="#7ABB5A" stroke-width="1"/>
+  <text x="710" y="461" font-family="'Courier New', monospace" font-size="14" fill="#7ABB5A" text-anchor="middle">Next.js</text>
+
+  <!-- Companies -->
+  <text x="112" y="550" font-family="'Courier New', monospace" font-size="16" fill="#A07060">CEO @ Surco  ·  CTO @ Portal de Especialistas  ·  Fullstack @ Karibu</text>
+
+  <!-- URL bottom right -->
+  <text x="1088" y="570" font-family="'Courier New', monospace" font-size="16" fill="#3D2A1F" text-anchor="end">alexelgueta.me</text>
+  <rect x="1088" y="575" width="0" height="0"/>
+
+  <!-- Avatar placeholder circle -->
+  <circle cx="1020" cy="300" r="140" fill="#2A1E16" stroke="#3D2A1F" stroke-width="2"/>
+  <text x="1020" y="320" font-family="Georgia, serif" font-size="80" fill="#E07855" text-anchor="middle" dominant-baseline="middle">A</text>
+</svg>
